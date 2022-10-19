@@ -39,7 +39,7 @@
                 </ul>
 
                 <ul class="secondary-nav" style="list-style: none">
-                    <li style="margin-left: -280px; margin-top: -4px"><a href="#"><span> Log-in </span></a></li>
+                    <li id="modalbtn" style="margin-left: -280px; margin-top: -4px"><a href="#"><span> Log-in </span></a></li>
                 </ul>
 
             </nav>   
@@ -100,14 +100,34 @@
     </div> 
 
     <!--FILLER ANNOUNCEMENT-->
-    <img src="images/Heavy-metal-knitting-5.jpg" alt="WeirdoWorld will publish your stories" style="max-width:500px; max-height:550px; margin-top: -450px; padding-left: 950px">
+    <img class="fade" src="images/Heavy-metal-knitting-5.jpg" alt="WeirdoWorld will publish your stories" style="max-width:500px; max-height:550px; margin-top: -450px; padding-left: 950px">
 
 
     <!--LATEST NEWS-->
     <div id="featured">
-        <h4 id="featured-title"><span>Featured</span></h4>
-        <div id="featured_slider" style="position:relative; overflow:hidden;">
+        <br><br><br><br><br><br><br><br><br><br>
+        <div style="height: 3px; background-color: rgb(237,237,237); margin-left: 110px; margin-right: 135px;"></div>
+        <h1 style="margin-left: 700px"><span>Featured</span></h1>
+        <div style="height: 3px; background-color: rgb(237,237,237); margin-left: 110px; margin-right: 135px;"></div>
+        <br><br><br><br><br><br><br>
+    </div>
+
+
+     <!-- LOGIN MODALl -->
+    <div id="login-modal" class="modal">
+
+        <div class="modal-content">
+            <div class="modal-header">      
+                <span class="close">&times;</span>
+            </div>
+        
+            <div class="modal-body">
+                
+            </div>
+        
+            <div class="modal-footer"></div>
         </div>
+      
     </div>
 
     
@@ -161,6 +181,36 @@
             slides[slideIndex-1].style.display = "block";
             dots[slideIndex-1].className += " active";
         } 
+
+    </script>
+
+
+    <script>
+
+        //LOGIN MODAL
+        var modal = document.getElementById("login-modal");
+        var btn = document.getElementById("modalbtn");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+
+            modal.style.display = "block";
+
+        }
+        
+        span.onclick = function() {
+
+            modal.style.display = "none";
+
+        }
+        
+        window.onclick = function(event) {
+        
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        } 
+
 
     </script>
 

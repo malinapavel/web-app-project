@@ -50,7 +50,16 @@
 
 
 
-    <!--NEWS SLIDESHOW-->
+    <!--NEWS SLIDESHOW FOR POPULAR NEWS-->
+
+    <div class="popular">
+        <br><br><br><br><br><br>
+        <div class= "container-popular">
+            <div class="separator"></div>
+            <h1><span class="popular-text">POPULAR RIGHT NOW</span></h1>
+            <div class="separator"></div>
+        </div>
+    </div>
 
     
     <div class="slideshow-container">
@@ -81,8 +90,11 @@
             <div class="text"></div>
         </div>
 
+
         <a class="prev" style="margin-left: -300px" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" style="margin-right: 300px"onclick="plusSlides(1)">&#10095;</a>
+
+        
     </div>
     <br>
   
@@ -94,17 +106,51 @@
         <span class="dot" onclick="currentSlide(5)"></span>
     </div> 
 
+
+
     <!--FILLER ANNOUNCEMENT-->
-    <img class="fade" src="images/Heavy-metal-knitting-5.jpg" alt="WeirdoWorld will publish your stories" style="max-width:480px; max-height:800px; margin-top: -450px; padding-left: 900px">
+    <img class="fade" src="images/Heavy-metal-knitting-5.jpg" alt="WeirdoWorld will publish your stories" style="max-width:480px; max-height:800px; margin-top: -1000px; padding-left: 900px">
 
 
     <!--LATEST NEWS-->
-    <div id="featured">
+    <div class="featured">
         <br><br><br><br><br><br>
-        <div style="height: 3px; background-color: rgb(237,237,237); margin-left: 110px; margin-right: 135px;"></div>
-        <h1 style="margin-left: 700px"><span>LATEST NEWS</span></h1>
-        <div style="height: 3px; background-color: rgb(237,237,237); margin-left: 110px; margin-right: 135px;"></div>
-        <br><br><br><br><br><br><br>
+        <div class= "container-latest">
+
+            <div class="separator"></div>
+            <h1><span class="featured-text">LATEST NEWS</span></h1>
+            <div class="separator"></div>
+            <br><br><br>
+
+            <div class="item" >
+                <div class="column ">
+                  <div class="inner">
+
+                    <div class="article-container">
+                        <div class="featured-image"> 
+                            <a href="#"><img class="imgf" alt="" src="images/6cro0q.jpg" /></a>
+                        </div>
+                        <h3 class="featured-title" style="color:black; margin-bottom: 10px">Lorem ipsum dolor d3d3d2g454g4gfefef45g45g54g45g1</h3>
+                        <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written in: 20.10.2022</i>
+                        <h4 class="description" style="color:rgb(190, 190, 190); margin-top: 70px">Some description of the news article...</h4>
+                    </div>
+
+                    <br><br><br><br><br>
+
+                    <div class="article-container">
+                        <div class="featured-image"> 
+                            <a href="#"><img class="imgf" alt="" src="images/6cro0q.jpg" /></a>
+                        </div>
+                        <h3 class="featured-title" style="color:black; margin-bottom: 10px">Lorem ipsum dolor sid amet</h3>
+                        <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written in: 20.10.2022</i>
+                        <h4 class="description" style="color:rgb(190, 190, 190); margin-top: 70px">Some description of the news article...</h4>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 
@@ -155,6 +201,8 @@
       
     </div>
 
+
+    
     
     <script>
 

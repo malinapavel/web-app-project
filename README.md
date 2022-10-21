@@ -17,3 +17,8 @@
 ## Specifications:
   For the website design (front-end), HTML and CSS will be used, whilst Javascript and Django comprise the back-end part of this website. 
   The news articles, users, comments etc. will be stored in a database, whose operations will be handled using the SQL programming language.
+
+
+### Consider the following:
+    - master branch: all the commits related to the 'index.html' webpage
+    

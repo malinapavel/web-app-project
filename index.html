@@ -154,6 +154,55 @@
     </div>
 
 
+     <!--FOOTER-->
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+     <div class="footer">
+        <p>[ Terms and conditions ]</p>
+        <p>[ About us ]</p>
+        <p>[ Code of Deontology ]</p>
+        <p>[ All writers ]</p>
+        <p>[ Contact ]</p>
+        <p>[ Send footage ]</p>
+        <div class="socials-1">
+
+            <img class="socials-1-img" src="images/icons8-facebook-96.png">
+            <img class="socials-1-img" src="images/icons8-instagram-96.png">
+            <img class="socials-1-img" src="images/icons8-tiktok-96.png">
+            <img class="socials-1-img" src="images/icons8-youtube-96.png">
+            <img class="socials-1-img" src="images/icons8-twitter-96.png">
+            
+
+        </div>
+
+        <div class="socials-2">
+
+            <img class="socials-2-img" src="images/icons8-tumblr-96.png">
+            <img class="socials-2-img" src="images/icons8-reddit-96.png">
+            <img class="socials-2-img" src="images/icons8-linkedin-96.png">
+            <img class="socials-2-img" src="images/icons8-facebook-messenger-96.png">
+            <img class="socials-2-img" src="images/icons8-whatsapp-96.png">
+            
+        </div>
+        
+        <div class="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
+
+        <form action="#">
+            <div class="row">
+                <div class="col-75">
+                    <input type="text" id="email-sub" name="email-sub" placeholder="Your e-mail">
+                </div>
+            </div>
+        </form>
+
+        <div class="row-sub">
+            <input type="submit" onclick="toggleText()" value="Subscribe">
+        </div>
+
+        <p class="thanks" id="thanks" style="display:none">Thank you, we are glad that you enjoy WeirdoWorld! ♥︎</p>
+
+     </div>
+
+
      <!-- LOGIN MODALl -->
     <div id="login-modal" class="modal">
 
@@ -201,8 +250,8 @@
       
     </div>
 
-
     
+
     
     <script>
 
@@ -284,6 +333,21 @@
             }
         } 
 
+
+    </script>
+
+    <script>
+
+        //"Thank you." MESSAGE TO APPEAR AFTER PRESSING THE 'SUBSCRIBE' BUTTON
+
+        function toggleText() {
+            var text = document.getElementById("thanks");
+            if (text.style.display === "none") {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+        }
+}
 
     </script>
 

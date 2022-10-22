@@ -1,7 +1,8 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap");
 html, body {
   max-width: 100%;
-  max-height: 5000px;
+  max-height: 12000px;
   overflow-x: hidden;
 }
 
@@ -113,266 +114,322 @@ nav li a:hover {
     color: white;
   }
 }
-/*POPULAR NEWS BANNER*/
-/*LOW-RESOLUTION(FOR MOBILE)*/
-.popular .container-popular .separator {
-  height: 2px;
-  background-color: rgb(237, 237, 237);
-  margin-left: 30px;
-  margin-right: 15px;
-}
-.popular .container-popular .popular-text {
-  margin-left: 250px;
-}
-
-/*DESKTOP RESOLUTION*/
-@media only screen and (min-width: 768px) {
-  .popular .container-popular .separator {
-    height: 3px;
-    background-color: rgb(237, 237, 237);
-    margin-left: 110px;
-    margin-right: 700px;
-  }
-  .popular .container-popular .popular-text {
-    margin-left: 310px;
-  }
-}
-/* NEWS SLIDESHOW */
-/*LOW RESOLUTION (FOR MOBILE)*/
-.slideshow-container {
-  max-width: 80px;
-  position: relative;
-  margin: auto;
-}
-
-.slide {
-  display: none;
-}
-
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 230px;
-  width: auto;
-  margin-top: -2px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-.next {
-  right: -620px;
-  border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-  background-color: #bbb;
-}
-
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  font-family: "Karla", sans-serif;
-  padding: -120px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 85px 0 -80px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-.fade {
-  -webkit-animation-name: fade;
-          animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@media only screen and (min-width: 768px) {
-  /*DESKTOP RESOLUTION*/
-  .slideshow-container {
-    max-width: 700px;
-    position: relative;
-    margin: auto;
-  }
-  .slide {
-    display: none;
-  }
-  .prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 230px;
-    width: auto;
-    margin-top: -2px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-  }
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-  .prev:hover, .next:hover {
-    background-color: #bbb;
-  }
-  .text {
-    color: #f2f2f2;
-    font-size: 15px;
-    font-family: "Karla", sans-serif;
-    padding: -120px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-  }
-  .dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  }
-  .active, .dot:hover {
-    background-color: #717171;
-  }
-  .fade {
-    -webkit-animation-name: fade;
-            animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-            animation-duration: 1.5s;
-  }
-  @-webkit-keyframes fade {
-    from {
-      opacity: 0.4;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  @keyframes fade {
-    from {
-      opacity: 0.4;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-}
-/* LATEST NEWS*/
+/*ABOUT SECTION*/
 /*LOW-RESOLUTION (FOR MOBILE)*/
-.featured .container-latest .separator {
+.about-section .featured .container-about .separator {
   height: 2px;
   background-color: rgb(237, 237, 237);
   margin-left: 50px;
   margin-right: 30px;
 }
-.featured .container-latest .featured-text {
-  margin-left: 300px;
+.about-section .featured .container-about .about-text {
+  margin-left: 280px;
 }
-.featured .container-latest .item .column .inner .featured-image .imgf {
-  width: 660px;
-  height: 350px;
+.about-section .featured .container-about p {
   margin-left: 50px;
+  text-align: justify;
+  max-width: 670px;
+  font-size: 17px;
+  line-height: 1.8;
 }
-.featured .container-latest .item .column .inner .featured-title {
-  font-size: 30px;
-  margin-left: 52px;
-}
-.featured .container-latest .item .column .inner .date {
-  max-width: 650px;
-  font-size: 13px;
+
+.writers-section .featured .container-writers .separator {
+  height: 2px;
+  background-color: rgb(237, 237, 237);
   margin-left: 50px;
+  margin-right: 30px;
 }
-.featured .container-latest .item .column .inner .description {
-  max-width: 650px;
-  max-height: 100px;
-  font-size: 18px;
+.writers-section .featured .container-writers .writers-text {
+  margin-left: 280px;
+}
+.writers-section .featured .container-writers p {
   margin-left: 50px;
+  text-align: justify;
+  max-width: 670px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+.writers-section .featured .container-writers i {
+  margin-left: 50px;
+  font-size: 23px;
+}
+.writers-section .featured .container-writers figure.snip1390 {
+  font-family: "Karla", sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  margin-left: 220px;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #000000;
+  text-align: center;
+  font-size: 16px;
+  background-color: rgb(237, 237, 237);
+  padding: 50px;
+  background-image: linear-gradient(-25deg, rgba(151, 151, 151, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+  box-sizing: border-box;
+}
+.writers-section .featured .container-writers figure.snip1390 *,
+.writers-section .featured .container-writers figure.snip1390 *:before,
+.writers-section .featured .container-writers figure.snip1390 *:after {
+  box-sizing: border-box;
+}
+.writers-section .featured .container-writers figure.snip1390 figcaption {
+  width: 100%;
+}
+.writers-section .featured .container-writers figure.snip1390 h2,
+.writers-section .featured .container-writers figure.snip1390 blockquote {
+  margin: 0;
+}
+.writers-section .featured .container-writers figure.snip1390 h2,
+.writers-section .featured .container-writers figure.snip1390 h4 {
+  font-weight: 300;
+}
+.writers-section .featured .container-writers figure.snip1390 h2 {
+  color: #000000;
+}
+.writers-section .featured .container-writers figure.snip1390 blockquote {
+  font-size: 1em;
+  padding: 45px 20px 40px 50px;
+  margin-top: 30px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: inset -1.4px -1.4px 2px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  position: relative;
+}
+.writers-section .featured .container-writers figure.snip1390 blockquote:before {
+  font-family: "Karla", sans-serif;
+  content: "“";
+  position: absolute;
+  font-size: 70px;
+  opacity: 0.25;
+  font-style: normal;
+  top: 0px;
+  left: 20px;
+}
+.writers-section .featured .container-writers figure.snip1390 .profile {
+  width: 100px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
+  margin-bottom: 10px;
+  border: solid 1px rgb(255, 255, 255);
+}
+
+.cond-section .featured .container-cond .separator {
+  height: 2px;
+  background-color: rgb(237, 237, 237);
+  margin-left: 50px;
+  margin-right: 30px;
+}
+.cond-section .featured .container-cond .cond-text {
+  margin-left: 200px;
+}
+.cond-section .featured .container-cond p {
+  margin-left: 50px;
+  text-align: justify;
+  max-width: 670px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+.cond-section .featured .container-cond i {
+  margin-left: 50px;
+  text-align: justify;
+  max-width: 670px;
+  font-size: 25px;
+}
+.cond-section .featured .container-cond ol {
+  margin-left: 50px;
+  max-width: 590px;
+  line-height: 1.6;
+}
+
+.deontology-section .featured .container-deontology .separator {
+  height: 2px;
+  background-color: rgb(237, 237, 237);
+  margin-left: 50px;
+  margin-right: 30px;
+}
+.deontology-section .featured .container-deontology .deontology-text {
+  margin-left: 220px;
+}
+.deontology-section .featured .container-deontology p {
+  margin-left: 50px;
+  text-align: justify;
+  max-width: 670px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+.deontology-section .featured .container-deontology i {
+  margin-left: 50px;
+  text-align: justify;
+  max-width: 670px;
+  font-size: 25px;
+  line-height: 1.8;
 }
 
 /*DESKTOP RESOLUTION*/
-@media only screen and (min-width: 768px) {
-  .featured .container-latest .separator {
+@media screen and (min-width: 768px) {
+  .about-section .featured .container-about .separator {
     height: 3px;
     background-color: rgb(237, 237, 237);
     margin-left: 110px;
     margin-right: 135px;
   }
-  .featured .container-latest .featured-text {
+  .about-section .featured .container-about .about-text {
     margin-left: 650px;
   }
-  .featured .container-latest .item .column .inner .article-container {
-    padding-bottom: 200px;
+  .about-section .featured .container-about p {
+    margin-left: 120px;
+    text-align: justify;
+    max-width: 1265px;
+    font-size: 17px;
+    line-height: 1.8;
   }
-  .featured .container-latest .item .column .inner .article-container .featured-image .imgf {
-    width: 600px;
-    height: 300px;
-    margin-left: 115px;
+  .writers-section .featured .container-writers .separator {
+    height: 3px;
+    background-color: rgb(237, 237, 237);
+    margin-left: 110px;
+    margin-right: 135px;
   }
-  .featured .container-latest .item .column .inner .article-container .featured-title {
-    max-width: 650px;
-    font-size: 34px;
-    margin-left: 800px;
-    margin-top: -310px;
+  .writers-section .featured .container-writers .writers-text {
+    margin-left: 650px;
   }
-  .featured .container-latest .item .column .inner .article-container .date {
-    max-width: 650px;
-    font-size: 15px;
-    margin-left: 800px;
+  .writers-section .featured .container-writers p {
+    margin-left: 150px;
+    padding-top: 100px;
+    text-align: justify;
+    max-width: 1265px;
+    font-size: 17px;
+    line-height: 1.8;
   }
-  .featured .container-latest .item .column .inner .article-container .description {
-    max-width: 650px;
-    max-height: 100px;
-    font-size: 18px;
-    margin-left: 800px;
+  .writers-section .featured .container-writers i {
+    margin-left: 150px;
+    font-size: 23px;
+  }
+  .writers-section .featured .container-writers figure.snip1390 {
+    font-family: "Karla", sans-serif;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    margin: 10px;
+    margin-left: 300px;
+    min-width: 230px;
+    max-width: 315px;
+    width: 100%;
+    color: #000000;
+    text-align: center;
+    font-size: 16px;
+    background-color: rgb(237, 237, 237);
+    padding: 50px;
+    background-image: linear-gradient(-25deg, rgba(151, 151, 151, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+    box-sizing: border-box;
+  }
+  .writers-section .featured .container-writers figure.snip1390 *,
+.writers-section .featured .container-writers figure.snip1390 *:before,
+.writers-section .featured .container-writers figure.snip1390 *:after {
+    box-sizing: border-box;
+  }
+  .writers-section .featured .container-writers figure.snip1390 figcaption {
+    width: 100%;
+  }
+  .writers-section .featured .container-writers figure.snip1390 h2,
+.writers-section .featured .container-writers figure.snip1390 blockquote {
+    margin: 0;
+  }
+  .writers-section .featured .container-writers figure.snip1390 h2,
+.writers-section .featured .container-writers figure.snip1390 h4 {
+    font-weight: 300;
+  }
+  .writers-section .featured .container-writers figure.snip1390 h2 {
+    color: #000000;
+  }
+  .writers-section .featured .container-writers figure.snip1390 blockquote {
+    font-size: 1em;
+    padding: 45px 20px 40px 50px;
+    margin-top: 30px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: inset -1.4px -1.4px 2px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    position: relative;
+  }
+  .writers-section .featured .container-writers figure.snip1390 blockquote:before {
+    font-family: "Karla", sans-serif;
+    content: "“";
+    position: absolute;
+    font-size: 70px;
+    opacity: 0.25;
+    font-style: normal;
+    top: 0px;
+    left: 20px;
+  }
+  .writers-section .featured .container-writers figure.snip1390 .profile {
+    width: 100px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
+    margin-bottom: 10px;
+    border: solid 1px rgb(255, 255, 255);
+  }
+  .cond-section .featured .container-cond .separator1 {
+    height: 3px;
+    background-color: rgb(237, 237, 237);
+    margin-left: 110px;
+    margin-right: 135px;
+    margin-top: 930px;
+  }
+  .cond-section .featured .container-cond .separator {
+    height: 3px;
+    background-color: rgb(237, 237, 237);
+    margin-left: 110px;
+    margin-right: 135px;
+  }
+  .cond-section .featured .container-cond .cond-text {
+    margin-left: 560px;
+  }
+  .cond-section .featured .container-cond p {
+    margin-left: 120px;
+    text-align: justify;
+    max-width: 1265px;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+  .cond-section .featured .container-cond i {
+    margin-left: 120px;
+    text-align: justify;
+    max-width: 670px;
+    font-size: 25px;
+  }
+  .cond-section .featured .container-cond ol {
+    margin-left: 120px;
+    max-width: 1225px;
+    line-height: 1.6;
+  }
+  .deontology-section .featured .container-deontology .separator {
+    height: 3px;
+    background-color: rgb(237, 237, 237);
+    margin-left: 110px;
+    margin-right: 135px;
+  }
+  .deontology-section .featured .container-deontology .deontology-text {
+    margin-left: 600px;
+  }
+  .deontology-section .featured .container-deontology p {
+    margin-left: 120px;
+    text-align: justify;
+    max-width: 1265px;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+  .deontology-section .featured .container-deontology i {
+    margin-left: 120px;
+    text-align: justify;
+    max-width: 1265px;
+    font-size: 25px;
+    line-height: 1.8;
   }
 }
 /* LOGIN MODAL*/
@@ -767,4 +824,4 @@ input[type=submit]:hover {
     max-width: 900px;
     text-align: left;
   }
-}/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=about.css.map */

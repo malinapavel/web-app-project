@@ -19,7 +19,7 @@
   The news articles, users, comments etc. will be stored in a database, whose operations will be handled using the SQL programming language.
 
 
-### Consider the following:
+### Consider the following branches:
     - 'master' branch: all the commits related to the 'index.html' webpage
     - 'about-us' branch: all the commits related to the 'about-us.html' webpage
     

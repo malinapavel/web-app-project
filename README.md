@@ -20,5 +20,6 @@
 
 
 ### Consider the following:
-    - master branch: all the commits related to the 'index.html' webpage
+    - 'master' branch: all the commits related to the 'index.html' webpage
+    - 'about-us' branch: all the commits related to the 'about-us.html' webpage
     

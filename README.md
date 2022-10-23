@@ -20,7 +20,7 @@
 
 
 ### Consider the following branches:
-    - 'master' branch: all the commits related to the 'index.html' webpage
+    - 'master' branch: all the commits related to all webpages (including 'index.html')
     - 'about-us' branch: all the commits related to the 'about-us.html' webpage
     - 'contact' branch: all the commits related to the 'contact.html' webpage
     - 'sign-up' branch: all the commits related to the 'sign-up.html' webpage

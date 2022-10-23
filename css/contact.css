@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap");
 html, body {
   max-width: 100%;
-  max-height: 5000px;
+  max-height: 12000px;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
@@ -114,102 +114,30 @@ nav li a:hover {
     color: white;
   }
 }
-/*POPULAR NEWS BANNER*/
-/*LOW-RESOLUTION(FOR MOBILE)*/
-.popular .container-popular .separator {
-  height: 2px;
-  background-color: rgb(237, 237, 237);
-  margin-left: 30px;
-  margin-right: 15px;
+/*CONTACT*/
+/*LOW-RESOLUTION (FOR MOBILE)*/
+.container-contact {
+  margin-top: 100px;
 }
-.popular .container-popular .popular-text {
-  margin-left: 250px;
+.container-contact p {
+  margin-left: 120px;
+  font-size: 23px;
 }
-
-/*DESKTOP RESOLUTION*/
-@media only screen and (min-width: 768px) {
-  .popular .container-popular .separator {
-    height: 3px;
-    background-color: rgb(237, 237, 237);
-    margin-left: 110px;
-    margin-right: 700px;
-  }
-  .popular .container-popular .popular-text {
-    margin-left: 310px;
-  }
-}
-/* NEWS SLIDESHOW */
-/*LOW RESOLUTION (FOR MOBILE)*/
-.slideshow-container {
-  max-width: 80px;
-  position: relative;
-  margin: auto;
-}
-
-.slide {
-  display: none;
-}
-
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 230px;
-  width: auto;
-  margin-top: -2px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
+.container-contact span {
+  margin-left: 120px;
   font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
-
-.next {
-  right: -620px;
-  border-radius: 3px 0 0 3px;
+.container-contact img {
+  margin-top: 50px;
+  margin-left: 150px;
+  width: 500px;
 }
-
-.prev:hover, .next:hover {
-  background-color: #bbb;
-}
-
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  font-family: "Karla", sans-serif;
-  padding: -120px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 85px 0 -80px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-.fade {
+.container-contact .fade {
   -webkit-animation-name: fade;
           animation-name: fade;
   -webkit-animation-duration: 1.5s;
           animation-duration: 1.5s;
 }
-
 @-webkit-keyframes fade {
   from {
     opacity: 0.4;
@@ -218,7 +146,6 @@ nav li a:hover {
     opacity: 1;
   }
 }
-
 @keyframes fade {
   from {
     opacity: 0.4;
@@ -227,153 +154,129 @@ nav li a:hover {
     opacity: 1;
   }
 }
+
+/* DESKTOP RESOLUTION*/
 @media only screen and (min-width: 768px) {
-  /*DESKTOP RESOLUTION*/
-  .slideshow-container {
-    max-width: 700px;
-    position: relative;
-    margin: auto;
+  .container-contact {
+    margin-top: 100px;
   }
-  .slide {
-    display: none;
+  .container-contact p {
+    margin-left: 120px;
+    font-size: 23px;
   }
-  .prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 230px;
-    width: auto;
-    margin-top: -2px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
+  .container-contact span {
+    margin-left: 120px;
     font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
   }
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-  .prev:hover, .next:hover {
-    background-color: #bbb;
-  }
-  .text {
-    color: #f2f2f2;
-    font-size: 15px;
-    font-family: "Karla", sans-serif;
-    padding: -120px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-  }
-  .dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  }
-  .active, .dot:hover {
-    background-color: #717171;
-  }
-  .fade {
-    -webkit-animation-name: fade;
-            animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-            animation-duration: 1.5s;
-  }
-  @-webkit-keyframes fade {
-    from {
-      opacity: 0.4;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  @keyframes fade {
-    from {
-      opacity: 0.4;
-    }
-    to {
-      opacity: 1;
-    }
+  .container-contact img {
+    margin-top: -500px;
+    margin-left: 960px;
+    max-width: 420px;
   }
 }
-/* LATEST NEWS*/
+/*UPLOAD FILES*/
 /*LOW-RESOLUTION (FOR MOBILE)*/
-.featured .container-latest .separator {
-  height: 2px;
-  background-color: rgb(237, 237, 237);
-  margin-left: 50px;
-  margin-right: 30px;
+.upload-section {
+  margin-left: 120px;
+  margin-top: 200px;
 }
-.featured .container-latest .featured-text {
-  margin-left: 300px;
-}
-.featured .container-latest .item .column .inner .featured-image .imgf {
-  width: 660px;
-  height: 350px;
-  margin-left: 50px;
-}
-.featured .container-latest .item .column .inner .featured-title {
+.upload-section i {
   font-size: 30px;
-  margin-left: 52px;
 }
-.featured .container-latest .item .column .inner .date {
-  max-width: 650px;
-  font-size: 13px;
-  margin-left: 50px;
-}
-.featured .container-latest .item .column .inner .description {
-  max-width: 650px;
-  max-height: 100px;
+.upload-section p {
   font-size: 18px;
-  margin-left: 50px;
+  margin-top: 80px;
+}
+.upload-section .browse {
+  margin-left: 30px;
+}
+.upload-section .custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-left: 30px;
+}
+.upload-section input[type=file] {
+  display: none;
+}
+.upload-section h5 {
+  margin-top: -30px;
+  margin-left: 285px;
+}
+.upload-section #images {
+  margin-left: -40px;
+}
+
+.add-text {
+  margin-left: 120px;
+}
+.add-text p {
+  font-size: 18px;
+  margin-top: 80px;
+}
+.add-text textarea {
+  width: 550px;
+  height: 500px;
+  text-align: left;
+}
+
+.submit {
+  margin-left: -20px;
 }
 
 /*DESKTOP RESOLUTION*/
-@media only screen and (min-width: 768px) {
-  .featured .container-latest .separator {
-    height: 3px;
-    background-color: rgb(237, 237, 237);
-    margin-left: 110px;
-    margin-right: 135px;
+@media screen and (min-width: 768px) {
+  .upload-section {
+    margin-left: 120px;
+    margin-top: 200px;
   }
-  .featured .container-latest .featured-text {
-    margin-left: 650px;
+  .upload-section i {
+    font-size: 30px;
   }
-  .featured .container-latest .item .column .inner .article-container {
-    padding-bottom: 200px;
-  }
-  .featured .container-latest .item .column .inner .article-container .featured-image .imgf {
-    width: 600px;
-    height: 300px;
-    margin-left: 115px;
-  }
-  .featured .container-latest .item .column .inner .article-container .featured-title {
-    max-width: 650px;
-    font-size: 34px;
-    margin-left: 800px;
-    margin-top: -310px;
-  }
-  .featured .container-latest .item .column .inner .article-container .date {
-    max-width: 650px;
-    font-size: 15px;
-    margin-left: 800px;
-  }
-  .featured .container-latest .item .column .inner .article-container .description {
-    max-width: 650px;
-    max-height: 100px;
+  .upload-section p {
     font-size: 18px;
-    margin-left: 800px;
+    margin-top: 80px;
+  }
+  .upload-section .browse {
+    margin-left: 30px;
+  }
+  .upload-section .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 30px;
+  }
+  .upload-section input[type=file] {
+    display: none;
+  }
+  .upload-section h5 {
+    margin-top: -30px;
+    margin-left: 285px;
+  }
+  .upload-section #images {
+    margin-left: -40px;
+    display: flex;
+  }
+  .add-text {
+    margin-left: 120px;
+  }
+  .add-text p {
+    font-size: 18px;
+    margin-top: 80px;
+  }
+  .add-text textarea {
+    width: 550px;
+    height: 500px;
+    text-align: left;
+    margin-left: -1px;
+  }
+  .submit {
+    margin-left: -50px;
+    margin-top: 30px;
   }
 }
 /* LOGIN MODAL*/
@@ -798,4 +701,4 @@ input[type=submit]:hover {
     width: 80px;
     height: 80px;
   }
-}/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=contact.css.map */

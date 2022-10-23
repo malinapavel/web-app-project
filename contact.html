@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/contact.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/logo-icon-neg.ico" sizes="32x32"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>WeirdoWorld</title>
 </head>
 <body>
-
-
 
     <!--MENU BAR-->
 
@@ -36,8 +35,8 @@
                     <li><a href="#"><span></span></a></li>
                     <li><a href="index.html"><span>[ Home ]</span></a></li>
                     <li><a href="#"><span>[ All news ]</span></a></li>
-                    <li><a href="about-us.html"><span>[ About Us ]</span></a></li>
-                    <li><a href="contact.html"><span>[ Contact ]</span></a></li>
+                    <li><a href="#"><span>[ About Us ]</span></a></li>
+                    <li><a href="#"><span>[ Contact ]</span></a></li>
                     
                 </ul>
 
@@ -53,117 +52,49 @@
 
 
 
-    <!--NEWS SLIDESHOW FOR POPULAR NEWS-->
+    <!--CONTACT SECTION-->
 
-    <div class="popular">
-        <br><br><br><br><br><br>
-        <div class= "container-popular">
-            <div class="separator"></div>
-            <h1><span class="popular-text">POPULAR RIGHT NOW</span></h1>
-            <div class="separator"></div>
-        </div>
-    </div>
+    <div class="container-contact">
 
-    
-    <div class="slideshow-container">
-
-        <br><br><br><br>
-        <div class="slide fade">
-            <img src="images/6cro0q.jpg" style="width:700px; height:400px; margin-left:-300px">
-            <div class="text"></div>
-        </div>
-  
-        <div class="slide fade">
-            <img src="images/6cro0q.jpg" style="width:700px; height:400px; margin-left:-300px">
-            <div class="text"></div>
-        </div>
-  
-        <div class="slide fade">
-            <img src="images/6cro0q.jpg" style="width:700px; height:400px; margin-left:-300px">
-            <div class="text"></div>
-        </div>
-
-        <div class="slide fade">
-            <img src="images/6cro0q.jpg" style="width:700px; height:400px; margin-left:-300px">
-            <div class="text"></div>
-        </div>
-
-        <div class="slide fade">
-            <img src="images/6cro0q.jpg" style="width:700px; height:400px; margin-left:-300px">
-            <div class="text"></div>
-        </div>
-
-
-        <a class="prev" style="margin-left: -300px" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" style="margin-right: 300px"onclick="plusSlides(1)">&#10095;</a>
-
+        <p>💼Office</p><span>Stockholm, Sweden</span>
+        <br><br><br>
+        <p>Press</p><span>press@weirdoworld.com</span>
+        <br><br><br>
+        <p>Feedback</p><span>publicfeedback@weirdoworld.com</span>
+        <br><br><br>
+        <p>Licensing</p><span>permission@weirdoworld.com</span>
+        <br><br><br>
+        <img src="images/cats.jpg">
         
     </div>
-    <br>
-  
-    <div style="text-align:left; margin-left:420px; margin-top:5px">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        <span class="dot" onclick="currentSlide(5)"></span>
-    </div> 
 
+    <div class="upload-section" id="upload-section">
 
+        <i>Share your story with us</i>
+        <p>Please upload your files here:
+        <label for="myfile" class="custom-file-upload">
+                <i class="fa fa-cloud-upload"  style="font-size:24px"></i> Choose files
+        </label>
+        <input class="browse" type="file" accept="image/*" id="myfile" name="myfile" onchange="preview()" multiple></p><br><br>
+        <h5 id="num-of-files">No Files Chosen</h5>
+        <div id="images"></div>
 
+    </div>
 
+    <div class="add-text">
+        <p>Please write some text below (optional)</p>
+        <textarea id="txt" name="txt"></textarea><br><br>
 
-    <!--FILLER ANNOUNCEMENT-->
+    </div>
 
-    <img class="fade" src="images/Heavy-metal-knitting-5.jpg" alt="WeirdoWorld will publish your stories" style="max-width:480px; max-height:800px; margin-top: -1000px; padding-left: 900px">
+    <div class="submit">
 
+        <input type="submit" value="Submit">
 
-
-
-    <!--LATEST NEWS-->
-
-    <div class="featured">
-        <br><br><br><br><br><br>
-        <div class= "container-latest">
-
-            <div class="separator"></div>
-            <h1><span class="featured-text">LATEST NEWS</span></h1>
-            <div class="separator"></div>
-            <br><br><br><br><br>
-
-            <div class="item" >
-                <div class="column ">
-                  <div class="inner">
-
-                    <div class="article-container">
-                        <div class="featured-image"> 
-                            <a href="#"><img class="imgf" alt="" src="images/6cro0q.jpg" /></a>
-                        </div>
-                        <h3 class="featured-title" style="color:black; margin-bottom: 10px">Lorem ipsum dolor d3d3d2g454g4gfefef45g45g54g45g1</h3>
-                        <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written in: 20.10.2022</i>
-                        <h4 class="description" style="color:rgb(190, 190, 190); margin-top: 70px">Some description of the news article...</h4>
-                    </div>
-
-                    <br><br><br><br><br>
-
-                    <div class="article-container">
-                        <div class="featured-image"> 
-                            <a href="#"><img class="imgf" alt="" src="images/6cro0q.jpg" /></a>
-                        </div>
-                        <h3 class="featured-title" style="color:black; margin-bottom: 10px">Lorem ipsum dolor sid amet</h3>
-                        <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written in: 20.10.2022</i>
-                        <h4 class="description" style="color:rgb(190, 190, 190); margin-top: 70px">Some description of the news article...</h4>
-                    </div>
-
-                  </div>
-                </div>
-            </div>
-
-        </div>
     </div>
 
     
-
+    
 
      <!--FOOTER-->
 
@@ -213,7 +144,6 @@
         <p class="thanks" id="thanks" style="display:none">Thank you, we are glad that you enjoy WeirdoWorld! ♥︎</p>
 
      </div>
-
 
 
 
@@ -268,12 +198,12 @@
 
     
 
+    
     <!--script-->
     <script src="js/menu.js"></script>
     <script src="js/login-modal.js"></script>
-    <script src="js/slideshow.js"></script>
     <script src="js/thank-u.js"></script>
-
+    <script src="js/upload-img.js"></script>
 
 
 

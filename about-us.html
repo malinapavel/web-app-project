@@ -13,6 +13,8 @@
 </head>
 <body>
 
+
+
     <!--MENU BAR-->
 
     <div class="navbar" >
@@ -34,8 +36,8 @@
                     <li><a href="#"><span></span></a></li>
                     <li><a href="index.html"><span>[ Home ]</span></a></li>
                     <li><a href="#"><span>[ All news ]</span></a></li>
-                    <li><a href="#"><span>[ About Us ]</span></a></li>
-                    <li><a href="#"><span>[ Contact ]</span></a></li>
+                    <li><a href="about-us.html"><span>[ About Us ]</span></a></li>
+                    <li><a href="contact.html"><span>[ Contact ]</span></a></li>
                     
                 </ul>
 
@@ -47,6 +49,9 @@
             
         </div>   
     </div>
+
+
+
 
 
     <!--ABOUT SECTION-->
@@ -248,14 +253,15 @@
 
 
      <!--FOOTER-->
+
      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
      <div class="footer">
         <a href="about-us.html#terms-and-cond" style="text-decoration: none; color: black"><p>[ Terms and conditions ]</p></a>
         <a href="about-us.html#whorwe" style="text-decoration: none; color: black"><p>[ About us ]</p></a>
         <a href="about-us.html#deontology" style="text-decoration: none; color: black"><p>[ Code of Deontology ]</p></a>
         <a href="about-us.html#writers" style="text-decoration: none; color: black"><p>[ All writers ]</p></a>
-        <p>[ Contact ]</p>
-        <p>[ Send footage ]</p>
+        <a href="contact.html" style="text-decoration: none; color: black"><p>[ Contact ]</p></a>
+        <a href="contact.html#upload-section" style="text-decoration: none; color: black"><p>[ Send footage ]</p></a>
         <div class="socials-1">
 
             <a href="https://www.facebook.com/"><img class="socials-1-img" src="images/icons8-facebook-96.png"></a>
@@ -296,7 +302,11 @@
      </div>
 
 
+
+
+
      <!-- LOGIN MODALl -->
+
     <div id="login-modal" class="modal">
 
         <div class="modal-content">
@@ -345,68 +355,12 @@
 
     
 
-    
-    <script>
-
-        //MENU BAR
-        const mobileBtn = document.getElementById('mob')
-              nav = document.querySelector('nav')
-              mobileBtnExit = document.getElementById('mob-exit');
-
-        mobileBtn.addEventListener('click', () => {
-            nav.classList.add('menu-btn');
-        })
-
-        mobileBtnExit.addEventListener('click', () => {
-            nav.classList.remove('menu-btn');
-        })
-
-    </script>
+    <!--script-->
+    <script src="js/menu.js"></script>
+    <script src="js/login-modal.js"></script>
+    <script src="js/thank-u.js"></script>
 
 
-    <script>
-
-        //LOGIN MODAL
-        var modal = document.getElementById("login-modal");
-        var btn = document.getElementById("modalbtn");
-        var span = document.getElementsByClassName("close")[0];
-
-        btn.onclick = function() {
-
-            modal.style.display = "block";
-
-        }
-        
-        span.onclick = function() {
-
-            modal.style.display = "none";
-
-        }
-        
-        window.onclick = function(event) {
-        
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        } 
-
-
-    </script>
-
-    <script>
-
-        //"Thank you." MESSAGE TO APPEAR AFTER PRESSING THE 'SUBSCRIBE' BUTTON
-
-        function toggleText() {
-            var text = document.getElementById("thanks");
-            if (text.style.display === "none") {
-                text.style.display = "block";
-            } else {
-                text.style.display = "none";
-        }
-}
-
-    </script>
 
 </body>
 </html>

@@ -25,3 +25,5 @@
     - 'contact' branch: all the commits related to the 'contact.html' webpage
     - 'sign-up' branch: all the commits related to the 'sign-up.html' webpage
     
+    => all branches (except the master) will be merged into master branch
+    

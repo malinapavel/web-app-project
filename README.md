@@ -23,4 +23,5 @@
     - 'master' branch: all the commits related to the 'index.html' webpage
     - 'about-us' branch: all the commits related to the 'about-us.html' webpage
     - 'contact' branch: all the commits related to the 'contact.html' webpage
+    - 'sign-up' branch: all the commits related to the 'sign-up.html' webpage
     

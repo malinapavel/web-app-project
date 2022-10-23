@@ -513,7 +513,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: rgb(237, 237, 237);
+  background-color: rgb(203, 203, 203);
 }
 
 .container-modal {
@@ -653,7 +653,7 @@ input[type=submit]:hover {
     margin-top: -1px;
   }
   input[type=submit]:hover {
-    background-color: rgb(237, 237, 237);
+    background-color: rgb(203, 203, 203);
   }
   .container-modal {
     border-radius: 5px;

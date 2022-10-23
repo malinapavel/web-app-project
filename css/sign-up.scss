@@ -148,256 +148,6 @@ nav {
 
 
 
-/*CONTACT*/
-
-/*LOW-RESOLUTION (FOR MOBILE)*/
-
-.container-contact{
-
-    margin-top:100px;
-
-    p{
-
-
-        margin-left: 120px;
-        font-size: 23px;
-        
-
-    }
-
-    span{
-
-        margin-left: 120px;
-        font-size: 18px;
-
-    }
-
-    img{
-
-        margin-top: 50px;
-        margin-left: 150px;
-        width: 500px;
-
-    }
-
-
-}
-
-
-/* DESKTOP RESOLUTION*/
-
-
-@media only screen and (min-width: 768px) {
-
-    .container-contact{
-
-        margin-top:100px;
-    
-        p{
-    
-    
-            margin-left: 120px;
-            font-size: 23px;
-            
-    
-        }
-    
-        span{
-    
-            margin-left: 120px;
-            font-size: 18px;
-    
-        }
-    
-        img{
-    
-            margin-top: -500px;
-            margin-left: 960px;
-            max-width: 420px;
-    
-        }
-    
-    }
-
-
-}
-
-
-
-/*UPLOAD FILES*/
-
-/*LOW-RESOLUTION (FOR MOBILE)*/
-
-.upload-section{
-
-    margin-left: 120px;
-    margin-top: 200px;
-
-    i{
-
-      font-size: 30px;
-    }
-
-    p{
-
-      font-size: 18px;
-      margin-top:80px;
-
-    }
-
-
-    .browse{
-
-      margin-left: 30px;
-
-    }
-
-    .custom-file-upload {
-      border: 1px solid #ccc;
-      display: inline-block;
-      padding: 6px 12px;
-      cursor: pointer;
-      font-size: 15px;
-      margin-left: 30px;
-    }
-
-    input[type="file"] {
-      display: none;
-    } 
-
-    h5{
-
-      margin-top: -30px;
-      margin-left: 285px;
-
-    }
-
-    #images{
-
-      margin-left: -40px;
-      //display: flex;
-
-    }
-
-}
-
-
-.add-text{
-
-  margin-left: 120px;
-
-  p{
-
-    font-size: 18px;
-    margin-top:80px;
-
-  }
-
-  textarea {
-    
-    width: 550px;
-    height:500px;
-    text-align: left;
-  } 
-
-}
-
-.submit{
-
-  margin-left: -20px;
-
-}
-
-
-
-/*DESKTOP RESOLUTION*/
-
-@media screen and (min-width: 768px){
-
-  .upload-section{
-
-    margin-left: 120px;
-    margin-top: 200px;
-
-    i{
-
-      font-size: 30px;
-    }
-
-    p{
-
-      font-size: 18px;
-      margin-top:80px;
-
-    }
-
-
-    .browse{
-
-      margin-left: 30px;
-
-    }
-
-    .custom-file-upload {
-      border: 1px solid #ccc;
-      display: inline-block;
-      padding: 6px 12px;
-      cursor: pointer;
-      font-size: 15px;
-      margin-left: 30px;
-    }
-
-    input[type="file"] {
-      display: none;
-    } 
-
-    h5{
-
-      margin-top: -30px;
-      margin-left: 285px;
-
-    }
-
-    #images{
-
-      margin-left: -40px;
-      display: flex;
-
-    }
-
-  }
-
-
-  .add-text{
-
-  margin-left: 120px;
-
-  p{
-
-    font-size: 18px;
-    margin-top:80px;
-
-  }
-
-  textarea {
-  
-    width: 550px;
-    height:500px;
-    text-align: left;
-    margin-left: -1px;
-  } 
-
- }
-
-  .submit{
-
-    margin-left: -50px;
-    margin-top: 30px;
-  }
-
-}
-
-
 /* LOGIN MODAL*/
 
 /*LOW-RESOLUTION(FOR MOBILE)*/
@@ -675,6 +425,152 @@ nav {
     }
 
   }
+
+
+
+/* REGISTRATION FORM*/
+
+/* LOW-RESOLUTION (FOR MOBILE)*/
+
+.registration{
+
+    margin-top: 100px;
+    margin-left: 110px;
+
+    i{
+
+        font-size: 25px;
+
+    }
+
+    input[type=text], select, textarea {
+        width: 80%;
+        height: 1px;
+        padding: 12px;
+        margin-top: 30px;
+        margin-left: 1px;
+        border: 1px solid rgb(181, 181, 181);
+        border-radius: 4px;
+        resize: vertical;
+      }
+      
+      label {
+        padding: 36px 12px 10px 0;
+        font-size: 15px;
+        display: inline-block;
+      }
+      
+      input[type=submit] {
+        background-color: rgb(218, 218, 218);
+        color: black;
+        padding: 11px 11px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 1px;
+        margin-top: 50px;
+      }
+      
+      input[type=submit]:hover {
+        background-color: rgb(203, 203, 203);
+      }
+      
+      
+      .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+      }
+      
+      .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+      }
+      
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+}
+
+
+/*DESKTOP RESOLUTION*/
+
+@media screen and (min-width: 768px){
+
+    .registration{
+
+        margin-top: 100px;
+        margin-left: 110px;
+    
+        i{
+    
+            font-size: 25px;
+    
+        }
+    
+        input[type=text], select, textarea {
+            width: 50%;
+            height: 1px;
+            padding: 12px;
+            margin-top: 30px;
+            margin-left: -200px;
+            border: 1px solid rgb(181, 181, 181);
+            border-radius: 4px;
+            resize: vertical;
+          }
+          
+          label {
+            padding: 36px 12px 10px 0;
+            font-size: 15px;
+            display: inline-block;
+          }
+          
+          input[type=submit] {
+            background-color: rgb(218, 218, 218);
+            color: black;
+            padding: 11px 11px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 1px;
+            margin-top: 50px;
+          }
+          
+          input[type=submit]:hover {
+            background-color: rgb(203, 203, 203);
+          }
+          
+          
+          .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+          }
+          
+          .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+          }
+          
+          .row:after {
+            content: "";
+            display: table;
+            clear: both;
+          }
+    
+    }
+    
+
+}
+
+
+
+
 
 /*FOOTER*/
 

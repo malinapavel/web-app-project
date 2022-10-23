@@ -4,6 +4,7 @@ html, body {
     max-width: 100%;
     max-height: 5000px;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body{
@@ -971,6 +972,54 @@ nav {
 
     }
 
+  }
+
+}
+
+
+/* SCROLL UP BUTTON */
+
+/* LOW-RESOLUTION (FOR MOBILE)*/
+
+#scrollbtn{
+
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  margin-top: 300px;
+  margin-left: 350px;
+  margin-bottom: -100px;
+
+  .scroll{
+
+    width: 80px;
+    height: 80px;
+
+  }
+
+}
+
+
+/*DESKTOP RESOLUTION*/
+
+@media screen and(min-width: 768px){
+
+  #scrollbtn{
+
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin-top: 150px;
+    margin-left: 1300px;
+    margin-bottom: -200px;
+  
+    .scroll{
+  
+      width: 80px;
+      height: 80px;
+  
+    }
+  
   }
 
 }

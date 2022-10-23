@@ -3,6 +3,7 @@ html, body {
   max-width: 100%;
   max-height: 12000px;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -130,6 +131,28 @@ nav li a:hover {
   margin-top: 50px;
   margin-left: 150px;
   width: 500px;
+}
+.container-contact .fade {
+  -webkit-animation-name: fade;
+          animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+}
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* DESKTOP RESOLUTION*/
@@ -647,5 +670,35 @@ input[type=submit]:hover {
     font-size: 20px;
     max-width: 900px;
     text-align: left;
+  }
+}
+/* SCROLL UP BUTTON */
+/* LOW-RESOLUTION (FOR MOBILE)*/
+#scrollbtn {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  margin-top: 300px;
+  margin-left: 350px;
+  margin-bottom: -100px;
+}
+#scrollbtn .scroll {
+  width: 80px;
+  height: 80px;
+}
+
+/*DESKTOP RESOLUTION*/
+@media screen and (min-width: 768px) {
+  #scrollbtn {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin-top: 150px;
+    margin-left: 1300px;
+    margin-bottom: -200px;
+  }
+  #scrollbtn .scroll {
+    width: 80px;
+    height: 80px;
   }
 }/*# sourceMappingURL=contact.css.map */

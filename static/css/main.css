@@ -433,7 +433,7 @@ input[type=text], select, textarea {
   height: 1px;
   padding: 12px;
   margin-top: 30px;
-  margin-left: 1px;
+  margin-left: -12px;
   border: 1px solid rgb(181, 181, 181);
   border-radius: 4px;
   resize: vertical;
@@ -576,7 +576,7 @@ input[type=submit]:hover {
     height: 5px;
     padding: 12px;
     margin-top: 25px;
-    margin-left: 35px;
+    margin-left: -15px;
     border: 1px solid rgb(181, 181, 181);
     border-radius: 4px;
     resize: vertical;
@@ -694,11 +694,21 @@ input[type=submit]:hover {
 .footer .subscribe p {
   margin-left: 140px;
 }
-.footer .row .col-75 {
-  margin-left: 458px;
+.footer .row .col-mail {
+  margin-left: 450px;
   margin-top: -20px;
   margin-bottom: -20px;
   width: 28%;
+}
+input[type=email], select, textarea {
+  width: 70%;
+  height: 5px;
+  padding: 12px;
+  margin-top: 25px;
+  margin-left: 5px;
+  border: 1px solid rgb(181, 181, 181);
+  border-radius: 4px;
+  resize: vertical;
 }
 .footer .row-sub {
   margin-left: 320px;
@@ -755,8 +765,18 @@ input[type=submit]:hover {
     margin-bottom: -20px;
     width: 45%;
   }
+  input[type=email], select, textarea {
+    width: 112%;
+    height: 5px;
+    padding: 12px;
+    margin-top: 25px;
+    margin-left: 90px;
+    border: 1px solid rgb(181, 181, 181);
+    border-radius: 4px;
+    resize: vertical;
+  }
   .footer .row-sub {
-    margin-left: 365px;
+    margin-left: 370px;
     margin-top: 50px;
   }
   .footer input[type=submit]:hover {

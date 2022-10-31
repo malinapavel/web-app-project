@@ -290,19 +290,20 @@
         
         <div class="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
 
-        <form action="#">
+        <form action="#" name="form1" onsubmit="return required()">
             <div class="row">
-                <div class="col-75">
-                    <input type="text" id="email-sub" name="email-sub" placeholder="Your e-mail">
+                <div class="col-mail">
+                    <input type="email" id="email-sub" name="email-sub" placeholder="Your e-mail">
                 </div>
             </div>
+
+            <div class="row-sub">
+                <input type="submit" value="Subscribe">
+            </div>
+    
+            <p class="thanks" id="thanks" style="display:none">Thank you, we are glad that you enjoy WeirdoWorld! ♥︎</p>
+    
         </form>
-
-        <div class="row-sub">
-            <input type="submit" onclick="toggleText()" value="Subscribe">
-        </div>
-
-        <p class="thanks" id="thanks" style="display:none">Thank you, we are glad that you enjoy WeirdoWorld! ♥︎</p>
 
      </div>
 
@@ -327,7 +328,6 @@
                     <form action="#">
                         <div class="row">
                             <div class="col-25">
-                                <label for="uname">[ Username ]</label>
                             </div>
                             <div class="col-75">
                                 <input type="text" id="uname" name="username" placeholder="Username">
@@ -336,7 +336,7 @@
 
                         <div class="row">
                             <div class="col-25">
-                                <label for="lname">[ Password ]</label>
+                                <label for="lname"></label>
                             </div>
                             <div class="col-75">
                                 <input type="text" id="pw" name="password" placeholder="Password">

@@ -7,3 +7,10 @@ class NewsletterSubscribers(models.Model):
 
     def __str__(self):
         return self.email
+
+class Footage(models.Model):
+    #img_url = 
+    description = models.CharField(max_length = 500)
+
+    def __str__(self):
+        return self.description

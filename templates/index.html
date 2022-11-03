@@ -43,7 +43,11 @@
                 </ul>
 
                 <ul class="secondary-nav" style="list-style: none">
+                    {% if request.user.is_authenticated %}
+                        <li style="margin-left: -430px; margin-top: -2px" title="Press here to log-out."><a href='log_out'><span>@{{ user.username }}</span></a></li>
+                    {% else %}
                     <li id="modalbtn" style="margin-left: -400px; margin-top: -2px"><a href="#"><span>[ Log-in ]</span></a></li>
+                    {% endif %}
                 </ul>
 
             </nav>   
@@ -239,12 +243,12 @@
 
                 </style>
                 {% for message in messages %}
+                    {% if "email" in message.tags %}
                     <h4>{{message}}</h4>
+                    {% endif %}
                 {% endfor %}
             </div>
-            
-            <!-- <p class="thanks" id="thanks" style="display:none">Thank you, we are glad that you enjoy WeirdoWorld! ♥︎</p> -->
-    
+                
         </form>
 
     </div>
@@ -265,7 +269,8 @@
                 <div style="text-align: center; font-size: 30px; margin-top:40px;">[ Log-in ]</div>
 
                 <div class="container-modal">
-                    <form action="#">
+                    <form action="{% url 'index' %}" method="POST">
+                    {% csrf_token %}
                         <div class="row">
                             <div class="col-25">
                             </div>
@@ -279,7 +284,7 @@
                                 <label for="lname"></label>
                             </div>
                             <div class="col-75">
-                                <input type="text" id="pw" name="password" placeholder="Password">
+                                <input type="password" id="pw" name="password" placeholder="Password">
                             </div>
                         </div>
                     
@@ -288,7 +293,17 @@
                         </div>
                         <br><br>
 
-                        <div style="text-align: center; margin-top:10px"><span>Don't have an account yet?</span><a href='sign_up' style="text-decoration: none"><span class="sign-up-btn"> Sign up now.</span></a></div>
+                        <div>
+                           
+                            {% for message in messages %}
+                                {% if "login" in message.tags %}
+                                <script>alert("Sorry, but your credentials are not valid. 😭")</script>
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+
+                        <div style="text-align: center; margin-top:50px"><span>Don't have an account yet?</span><a href='sign_up' style="text-decoration: none"><span class="sign-up-btn"> Sign up now.</span></a></div>
                     
                     </form>
             </div>
@@ -304,7 +319,6 @@
     <script src="{% static 'js/menu.js' %}"></script>
     <script src="{% static 'js/login-modal.js' %}"></script>
     <script src="{% static 'js/slideshow.js' %}"></script>
-    <!-- <script src="{% static 'js/thank-u.js' %}"></script>  -->
     <script src="{% static 'js/scroll-up.js' %}"></script>
 
 

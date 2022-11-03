@@ -81,12 +81,14 @@
         </label>
         <input class="browse" type="file" accept="image/*" id="myfile" name="myfile" onchange="preview()" multiple></p><br><br>
         <h5 id="num-of-files">No Files Chosen</h5>
-        <div id="images"></div>
+        <div id="images" name="images"></div>
+        <p>‼️Make sure to add a maximum of 5 images!</p>
 
     </div>
 
     <div class="add-text">
-        <p>Please write some text below (optional)</p>
+        <br><br><br><br>
+        <p>Please write some text below (optional):</p>
         <textarea id="txt" name="txt"></textarea><br><br>
     </div>
 
@@ -136,7 +138,9 @@
         
         <div class="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
 
-        <form action="#" name="form1" onsubmit="return required()">
+        <form action="{% url 'contact' %}" method="POST" class="form1" name="form1"><!--onsubmit="return required()-->
+            {% csrf_token %}
+            
             <div class="row">
                 <div class="col-mail">
                     <input type="email" id="email-sub" name="email-sub" placeholder="Your e-mail">
@@ -147,8 +151,32 @@
                 <input type="submit" value="Subscribe">
             </div>
     
-            <p class="thanks" id="thanks" style="display:none">Thank you, we are glad that you enjoy WeirdoWorld! ♥︎</p>
-    
+            <div>
+                <style>
+
+                h4{
+
+                    margin-left: 460px;
+                    width: 30%;
+
+                }
+
+                @media only screen and (min-width: 768px){
+
+                    h4{
+
+                        margin-left: 540px;
+
+                    }
+
+                }
+
+                </style>
+                {% for message in messages %}
+                    <h4>{{message}}</h4>
+                {% endfor %}
+            </div>
+                
         </form>
 
      </div>
@@ -170,7 +198,7 @@
                 <div style="text-align: center; font-size: 30px; margin-top:40px;">[ Log-in ]</div>
 
                 <div class="container-modal">
-                    <form action="#">
+                    <form action="{% url 'contact' %}" method="POST">
                         <div class="row">
                             <div class="col-25">
                             </div>
@@ -184,7 +212,7 @@
                                 <label for="lname"></label>
                             </div>
                             <div class="col-75">
-                                <input type="text" id="pw" name="password" placeholder="Password">
+                                <input type="password" id="pw" name="password" placeholder="Password">
                             </div>
                         </div>
                     
@@ -193,7 +221,7 @@
                         </div>
                         <br><br>
 
-                        <div style="text-align: center; margin-top:10px"><span>Don't have an account yet?</span><a href='sign_up' style="text-decoration: none"><span class="sign-up-btn"> Sign up now.</span></a></div>                    
+                        <div style="text-align: center; margin-top:50px"><span>Don't have an account yet?</span><a href='sign_up' style="text-decoration: none"><span class="sign-up-btn"> Sign up now.</span></a></div>                    
                     </form>
             </div>
         
@@ -208,7 +236,6 @@
     <!--script-->
     <script src="{% static 'js/menu.js' %}"></script>
     <script src="{% static 'js/login-modal.js' %}"></script>
-    <script src="{% static 'js/thank-u.js' %}"></script>
     <script src="{% static 'js/upload-img.js' %}"></script>
     <script src="{% static 'js/scroll-up.js' %}"></script>
 

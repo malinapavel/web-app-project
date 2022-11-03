@@ -176,7 +176,16 @@ input[type=text], select, textarea {
   border-radius: 4px;
   resize: vertical;
 }
-
+input[type=password], select, textarea {
+  width: 70%;
+  height: 1px;
+  padding: 12px;
+  margin-top: 30px;
+  margin-left: -12px;
+  border: 1px solid rgb(181, 181, 181);
+  border-radius: 4px;
+  resize: vertical;
+}
 label {
   padding: 36px 12px 10px 0;
   font-size: 12px;
@@ -310,6 +319,16 @@ input[type=submit]:hover {
     cursor: pointer;
   }
   input[type=text], select, textarea {
+    width: 70%;
+    height: 5px;
+    padding: 12px;
+    margin-top: 25px;
+    margin-left: -15px;
+    border: 1px solid rgb(181, 181, 181);
+    border-radius: 4px;
+    resize: vertical;
+  }
+  input[type=password], select, textarea {
     width: 70%;
     height: 5px;
     padding: 12px;

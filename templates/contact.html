@@ -77,17 +77,42 @@
         
     </div>
 
+    <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
     <div class="upload-section" id="upload-section">
-
+    
         <i>Share your story with us</i>
         <p>Please upload your files here:
         <label for="myfile" class="custom-file-upload">
             <i class="fa-solid fa-cloud-arrow-up"  style="font-size:24px"></i> Choose files
         </label>
-        <input class="browse" type="file" accept="image/*" id="myfile" name="myfile" onchange="preview()" multiple></p><br><br>
-        <h5 id="num-of-files">No Files Chosen</h5>
-        <div id="images" name="images"></div>
-        <p>‼️Make sure to add a maximum of 5 images!</p>
+        <!-- <input class="browse" type="file" accept="image/*" id="myfile" name="myfile" onchange="preview()" multiple></p><br><br> -->
+        <input class="browse" type="file" accept="image/*" id="myfile" name="myfile" multiple></p><br><br>
+        <!-- <h5 id="num-of-files" style="color:black; font-size: 15px!important">No Files Chosen</h5>
+        <div id="images" name="images"></div> -->
+        <div>
+            <style>
+                .selection{
+
+                    margin-left: 10px!important;
+                    max-height: 70px!important;
+                }
+
+                @media only screen and (min-width: 768px){
+
+                    .selection{
+
+                        margin-left: 10px!important;
+                        max-height: 90px!important;
+                    }
+
+                }
+            </style>
+            {% if file_url %}
+                <img class="selection" src="{{ file_url }}">
+            {% endif %}
+        </div>
+        <p>‼️Make sure to only add one picture!</p>
 
     </div>
 
@@ -100,6 +125,38 @@
     <div class="submit">
         <input type="submit" value="Submit">
     </div>
+
+    <div>
+        <style>
+
+            h5{
+
+                color: red;
+                margin-left: 120px;
+                font-size: 20px;
+
+            }
+
+            @media only screen and (min-width: 768px){
+
+                h5{
+
+                    margin-left: 120px;
+                    color: red;
+                }
+
+            }
+
+            </style>
+
+            {% for message in messages %}
+                {% if "footage" in message.tags %}
+                    <h5>{{ message }}</h5>
+                {% endif %}
+            {% endfor %}
+    </div>
+    
+    </form>
 
 
 
@@ -178,7 +235,9 @@
 
                 </style>
                 {% for message in messages %}
-                    <h4>{{message}}</h4>
+                    {% if "email" in message.tags %}
+                        <h4>{{message}}</h4>
+                    {% endif %}
                 {% endfor %}
             </div>
                 

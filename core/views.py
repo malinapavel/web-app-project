@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from . models import NewsletterSubscribers, Footage
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def index(request):
@@ -81,7 +82,7 @@ def contact(request):
                 else: 
                     messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
                     NewsletterSubscribers.objects.create(email=email)
-            return render(request, 'conact.html')
+            return render(request, 'contact.html')
 
         elif 'username' in request.POST and 'password' in request.POST:
             username = request.POST['username']
@@ -95,10 +96,32 @@ def contact(request):
             else:
                 messages.info(request, 'ffffff', extra_tags='login')
                 return render(request, 'contact.html')
-        
-        #elif 'images' in request.POST:
 
     return render(request, 'contact.html')
+
+
+def upload(request):
+    if request.method == 'POST':
+        if 'myfile' in request.FILES or 'txt' in request.POST:
+                user = request.user.username
+                img = request.FILES['myfile']
+                fss = FileSystemStorage()
+                file = fss.save(img.name, img)
+                file_url = fss.url(file)
+                description = request.POST['txt']
+
+                if user != "":
+                    Footage.objects.create(user=user, img=file_url, description=description)
+                    return render(request, 'contact.html', {'file_url': file_url})
+                else:
+                    messages.info(request, 'Sorry, but you need an account to send us footage. 😭', extra_tags='footage')
+                    return render(request, 'contact.html')
+        else: 
+            return render(request, 'contact.html')
+
+    return render(request, 'contact.html')
+
+
 
 def sign_up(request):
     if request.method == 'POST':

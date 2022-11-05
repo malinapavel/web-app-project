@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 class NewsletterSubscribers(models.Model):
@@ -9,8 +10,10 @@ class NewsletterSubscribers(models.Model):
         return self.email
 
 class Footage(models.Model):
-    #img_url = 
-    description = models.CharField(max_length = 500)
+    img = models.ImageField(upload_to='footages')
+    description = models.TextField(max_length = 500)
+    user = models.CharField(max_length = 100)
+    sent_on = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
-        return self.description
+        return self.user

@@ -43,7 +43,12 @@
                 </ul>
 
                 <ul class="secondary-nav" style="list-style: none">
-                    <li id="modalbtn" style="margin-left: -400px; margin-top: -2px"><a href="#"><span>[ Log-in ]</span></a></li>
+                    {% if request.user.is_authenticated %}
+                        <li style="margin-left: -290px; margin-top: -2px"><a href='log_out'><span>[ Log-out ]</span></a></li>
+                        <li style="margin-left: -300px; margin-top: -2px"><a href="#"><span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span></a></li> 
+                        {% else %}
+                        <li id="modalbtn" style="margin-left: -400px; margin-top: -2px"><a href="#"><span>[ Log-in ]</span></a></li>
+                    {% endif %}
                 </ul>
 
             </nav>   
@@ -351,27 +356,38 @@
 
                 <div class="container-modal">
                     <form action="{% url 'about_us' %}" method="POST">
-                        <div class="row">
-                            <div class="col-25">
+                        {% csrf_token %}
+                            <div class="row">
+                                <div class="col-25">
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" id="uname" name="username" placeholder="Username">
+                                </div>
                             </div>
-                            <div class="col-75">
-                                <input type="text" id="uname" name="username" placeholder="Username">
+    
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="lname"></label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="password" id="pw" name="password" placeholder="Password">
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-25">
-                                <label for="lname"></label>
+                        
+                            <div class="row">
+                                <input type="submit" value="Sign-in">
                             </div>
-                            <div class="col-75">
-                                <input type="password" id="pw" name="password" placeholder="Password">
+                            <br><br>
+    
+                            <div>
+                               
+                                {% for message in messages %}
+                                    {% if "login" in message.tags %}
+                                    <script>alert("Sorry, but your credentials are not valid. 😭")</script>
+                                    {% endif %}
+                                {% endfor %}
+    
                             </div>
-                        </div>
-                    
-                        <div class="row">
-                            <input type="submit" value="Sign-in">
-                        </div>
-                        <br><br>
 
                         <div style="text-align: center; margin-top:50px"><span>Don't have an account yet?</span><a href='sign_up' style="text-decoration: none"><span class="sign-up-btn"> Sign up now.</span></a></div>                    
                     </form>

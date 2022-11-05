@@ -16,6 +16,7 @@ def index(request):
                 else: 
                     messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
                     NewsletterSubscribers.objects.create(email=email)
+            return render(request, 'index.html')
 
         elif 'username' in request.POST and 'password' in request.POST:
             username = request.POST['username']
@@ -33,22 +34,40 @@ def index(request):
     else: 
         return render(request, 'index.html')
 
+
+
+
 def index2(request):
     return render(request, 'index.html')
 
 def about_us(request):
-
     if request.method == 'POST':
-        email = request.POST['email-sub']
-        if '@' in email:
-            if NewsletterSubscribers.objects.filter(email = email).exists():
-                messages.info(request, 'You already subscribed to the newsletter.')
+        if 'email-sub' in request.POST:
+            email = request.POST['email-sub']
+            if '@' in email:
+                if NewsletterSubscribers.objects.filter(email = email).exists():
+                    messages.info(request, 'You already subscribed to the newsletter.', extra_tags='email')
                 
-            else: 
-                messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗')
-                NewsletterSubscribers.objects.create(email=email)
+                else: 
+                    messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
+                    NewsletterSubscribers.objects.create(email=email)
+            return render(request, 'about-us.html')
 
-    return render(request, 'about-us.html')
+        elif 'username' in request.POST and 'password' in request.POST:
+            username = request.POST['username']
+            password = request.POST['password']
+
+            user = auth.authenticate(username=username, password=password)
+
+            if user is not None:
+                auth.login(request, user)
+                return render(request, 'about-us.html')
+            else:
+                messages.info(request, 'ffffff', extra_tags='login')
+                return render(request, 'about-us.html')
+
+    else:
+        return render(request, 'about-us.html')
 
 def contact(request):
 
@@ -57,12 +76,25 @@ def contact(request):
             email = request.POST['email-sub']
             if '@' in email:
                 if NewsletterSubscribers.objects.filter(email = email).exists():
-                    messages.info(request, 'You already subscribed to the newsletter.')
+                    messages.info(request, 'You already subscribed to the newsletter.', extra_tags='email')
                 
                 else: 
-                    messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗')
+                    messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
                     NewsletterSubscribers.objects.create(email=email)
-            return render(request, 'contact.html')
+            return render(request, 'conact.html')
+
+        elif 'username' in request.POST and 'password' in request.POST:
+            username = request.POST['username']
+            password = request.POST['password']
+
+            user = auth.authenticate(username=username, password=password)
+
+            if user is not None:
+                auth.login(request, user)
+                return render(request, 'contact.html')
+            else:
+                messages.info(request, 'ffffff', extra_tags='login')
+                return render(request, 'contact.html')
         
         #elif 'images' in request.POST:
 
@@ -104,6 +136,8 @@ def sign_up(request):
 
             return render(request, 'sign-up.html')
 
+        #elif (...): pass
+
     else:
         return render(request, 'sign-up.html')
 
@@ -117,13 +151,28 @@ def log_out(request):
 def all_news(request):
 
     if request.method == 'POST':
-        email = request.POST['email-sub']
-        if '@' in email:
-            if NewsletterSubscribers.objects.filter(email = email).exists():
-                messages.info(request, 'You already subscribed to the newsletter.')
+        if 'email-sub' in request.POST:
+            email = request.POST['email-sub']
+            if '@' in email:
+                if NewsletterSubscribers.objects.filter(email = email).exists():
+                    messages.info(request, 'You already subscribed to the newsletter.', extra_tags='email')
                 
-            else: 
-                messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗')
-                NewsletterSubscribers.objects.create(email=email)
+                else: 
+                    messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
+                    NewsletterSubscribers.objects.create(email=email)
+            return render(request, 'all-news.html')
+
+        elif 'username' in request.POST and 'password' in request.POST:
+            username = request.POST['username']
+            password = request.POST['password']
+
+            user = auth.authenticate(username=username, password=password)
+
+            if user is not None:
+                auth.login(request, user)
+                return render(request, 'all-news.html')
+            else:
+                messages.info(request, 'ffffff', extra_tags='login')
+                return render(request, 'all-news.html')
 
     return render(request, 'all-news.html')

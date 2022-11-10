@@ -98,7 +98,7 @@
             <img src="{% static 'images/6cro0q.jpg' %}" style="width:700px; height:400px; margin-left:-300px">
             <div class="text"></div>
         </div> -->
-        {% for news in display_news %}
+        {% for news in display_news|dictsortreversed:"access_count" %}
         <style>
             h3{
 

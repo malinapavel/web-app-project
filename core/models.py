@@ -23,3 +23,5 @@ class News(models.Model):
     title = models.CharField(max_length = 150)
     written_on = models.DateTimeField(default=datetime.now)
     description_brief = models.CharField(max_length = 150)
+    access_count = models.IntegerField()
+    id = models.IntegerField(primary_key=True)

@@ -61,28 +61,30 @@
 
     <div class="query-container">
         <form action="{% url 'all_news' %}" method="POST">
-        {% csrf_token %}
-        <div class="search">
-            <input type="text" placeholder="Search..." name="search">
-        </div>
+            {% csrf_token %}
+            <div class="search">
+                <input type="text" placeholder="Search..." name="search">
+            </div>
+        </form>
 
         <div class="sort-by">
-            <p>Sort by 
-                <button id="latest" title="Latest news"><span>⌚️</span></button>
-                <button id="popular" title="Popular news"><span>👁</span></button>
-            </p>
+            <p>Sort by</p>
+                <form action="{% url 'all_news' %}" method="GET">
+                    <div style="margin-top: -60px!important">
+                        <button type="submit" id="latest" name="latest" title="Latest news"><span>⌚️</span></button>
+                        <button type="submit" id="popular" name="popular" title="Popular news"><span>👁</span></button>
+                    </div>
+                </form>
             
         </div>
-        
-
     </div>
-    <br><br><br>
+    <br><br><br><br><br>
 
     <div class="all-news">
         <div class="item" >
             <div class="column ">
               <div class="inner">
-                {% for news in display_news|dictsort:"title" %}
+                {% for news in display_news %}
                 <div class="article-container">
                     <div class="news-image"> 
                         <a href="#"><img class="imgf" alt="" src="{{news.img.url}}" /></a>
@@ -132,7 +134,7 @@
             </div>
         </div>
     </div>
-    </form>
+    
 
 
 

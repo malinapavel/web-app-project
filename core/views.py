@@ -161,6 +161,19 @@ def sign_up(request):
                 return render(request, 'sign-up.html')
 
             return render(request, 'sign-up.html')
+        
+        elif 'username' in request.POST and 'password' in request.POST:
+            username = request.POST['username']
+            password = request.POST['password']
+
+            user = auth.authenticate(username=username, password=password)
+
+            if user is not None:
+                auth.login(request, user)
+                return render(request, 'sign-up.html')
+            else:
+                messages.info(request, 'ffffff', extra_tags='login')
+                return render(request, 'sign-up.html')
 
 
     else:
@@ -175,7 +188,7 @@ def log_out(request):
 
 
 def all_news(request):
-    allnews = News.objects.all()  
+    allnews = News.objects.all().order_by('title')
     if request.method == 'POST':
         if 'email-sub' in request.POST:
             email = request.POST['email-sub']
@@ -202,9 +215,7 @@ def all_news(request):
                 return render(request, 'all-news.html', {'display_news' : allnews})
         elif 'search' in request.POST:
             search = request.POST['search']
-            allnews = News.objects.all() 
             keyword_news = []
-            #sorted_alpha_news = News.objects.all().order_by('title').values()
             for n in allnews:
                 if search in n.title:
                     keyword_news.append(n)
@@ -212,6 +223,19 @@ def all_news(request):
                 msg_str = 'Sorry, but there are no news containing the keyword "' + search + '".'
                 messages.info(request, msg_str, extra_tags='search')
                 return render(request, 'all-news.html', {'display_news' : keyword_news})
-            return render(request, 'all-news.html', {'display_news' : keyword_news})
+            else:
+                return render(request, 'all-news.html', {'display_news' : keyword_news})
+        else:
+            return render(request, 'all-news.html', {'display_news' : allnews})
+        
+    if request.method == 'GET':
+        if 'latest' in request.GET:
+            latest = request.GET.get('latest')
+            sort_date_news = News.objects.all().order_by('written_on') 
+            return render(request, 'all-news.html', {'display_news' : sort_date_news})
+        elif 'popular' in request.GET:
+            popular = request.GET.get('popular')
+            sort_pop_news = News.objects.all().order_by('-access_count') 
+            return render(request, 'all-news.html', {'display_news' : sort_pop_news})
 
     return render(request, 'all-news.html', {'display_news' : allnews})

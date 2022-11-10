@@ -552,14 +552,18 @@ input[type=email], select, textarea {
   margin-left: 470px;
   width: 280px;
 }
-
 .sort-by p {
   margin-left: 125px;
-  margin-top: -37px;
+  margin-top: -25px;
+  font-size: 25px;
+}
+.sort-by button{
+  margin-top: -200px;
   font-size: 25px;
 }
 .sort-by #latest {
   font-size: 25px;
+  margin-left: 220px;
   border: none;
   background-color: white;
   cursor: pointer;
@@ -591,8 +595,12 @@ input[type=email], select, textarea {
     margin-top: -37px;
     font-size: 40px;
   }
+  .sort-by button{
+    font-size: 25px;
+  }
   .sort-by #latest {
     font-size: 40px;
+    margin-left: 270px;
     border: none;
     background-color: white;
     cursor: pointer;

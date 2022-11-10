@@ -21,9 +21,10 @@
 
 ### Consider the following branches:
     - 'master' branch: all the commits related to all webpages (including 'index.html')
-    - 'about-us' branch: all the commits related to the 'about-us.html' webpage
-    - 'contact' branch: all the commits related to the 'contact.html' webpage
-    - 'sign-up' branch: all the commits related to the 'sign-up.html' webpage
+    - 'about-us' branch: all the commits related to the 'about-us.html' web app
+    - 'contact' branch: all the commits related to the 'contact.html' web app
+    - 'sign-up' branch: all the commits related to the 'sign-up.html' web app
+    - 'django_pj' branch: all the commits related to the backend part of the web app
     
     => all branches (except the master) will be merged into master branch
     

@@ -17,3 +17,9 @@ class Footage(models.Model):
 
     def __str__(self):
         return self.user
+
+class News(models.Model):
+    img = models.ImageField(upload_to='news')
+    title = models.CharField(max_length = 150)
+    written_on = models.DateTimeField(default=datetime.now)
+    description_brief = models.CharField(max_length = 150)

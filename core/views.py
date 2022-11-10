@@ -2,11 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from . models import NewsletterSubscribers, Footage
+from . models import NewsletterSubscribers, Footage, News
 from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def index(request):
+    allnews = News.objects.all()  
     if request.method == 'POST':
         if 'email-sub' in request.POST:
             email = request.POST['email-sub']
@@ -17,7 +18,7 @@ def index(request):
                 else: 
                     messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
                     NewsletterSubscribers.objects.create(email=email)
-            return render(request, 'index.html')
+            return render(request, 'index.html', {'display_news' : allnews})
 
         elif 'username' in request.POST and 'password' in request.POST:
             username = request.POST['username']
@@ -27,19 +28,22 @@ def index(request):
 
             if user is not None:
                 auth.login(request, user)
-                return render(request, 'index.html')
+                return render(request, 'index.html', {'display_news' : allnews})
             else:
                 messages.info(request, 'ffffff', extra_tags='login')
-                return render(request, 'index.html')
+                return render(request, 'index.html', {'display_news' : allnews})
 
     else: 
-        return render(request, 'index.html')
+        return render(request, 'index.html', {'display_news' : allnews})
 
 
 
 
 def index2(request):
-    return render(request, 'index.html')
+    allnews = News.objects.all()  
+    return render(request, 'index.html',{'display_news' : allnews})
+
+
 
 def about_us(request):
     if request.method == 'POST':
@@ -71,7 +75,6 @@ def about_us(request):
         return render(request, 'about-us.html')
 
 def contact(request):
-
     if request.method == 'POST':
         if 'email-sub' in request.POST:
             email = request.POST['email-sub']
@@ -159,7 +162,6 @@ def sign_up(request):
 
             return render(request, 'sign-up.html')
 
-        #elif (...): pass
 
     else:
         return render(request, 'sign-up.html')
@@ -168,11 +170,12 @@ def sign_up(request):
 
 def log_out(request):
     auth.logout(request)
-    return render(request, 'index.html')
+    allnews = News.objects.all()
+    return render(request, 'index.html',{'display_news' : allnews})
 
 
 def all_news(request):
-
+    allnews = News.objects.all()  
     if request.method == 'POST':
         if 'email-sub' in request.POST:
             email = request.POST['email-sub']
@@ -183,7 +186,7 @@ def all_news(request):
                 else: 
                     messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
                     NewsletterSubscribers.objects.create(email=email)
-            return render(request, 'all-news.html')
+            return render(request, 'all-news.html', {'display_news' : allnews})
 
         elif 'username' in request.POST and 'password' in request.POST:
             username = request.POST['username']
@@ -193,9 +196,22 @@ def all_news(request):
 
             if user is not None:
                 auth.login(request, user)
-                return render(request, 'all-news.html')
+                return render(request, 'all-news.html', {'display_news' : allnews})
             else:
                 messages.info(request, 'ffffff', extra_tags='login')
-                return render(request, 'all-news.html')
+                return render(request, 'all-news.html', {'display_news' : allnews})
+        elif 'search' in request.POST:
+            search = request.POST['search']
+            allnews = News.objects.all() 
+            keyword_news = []
+            #sorted_alpha_news = News.objects.all().order_by('title').values()
+            for n in allnews:
+                if search in n.title:
+                    keyword_news.append(n)
+            if len(keyword_news) == 0:
+                msg_str = 'Sorry, but there are no news containing the keyword "' + search + '".'
+                messages.info(request, msg_str, extra_tags='search')
+                return render(request, 'all-news.html', {'display_news' : keyword_news})
+            return render(request, 'all-news.html', {'display_news' : keyword_news})
 
-    return render(request, 'all-news.html')
+    return render(request, 'all-news.html', {'display_news' : allnews})

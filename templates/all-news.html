@@ -60,8 +60,10 @@
     <!--SEARCH BAR AND SORT BY-->
 
     <div class="query-container">
+        <form action="{% url 'all_news' %}" method="POST">
+        {% csrf_token %}
         <div class="search">
-            <input type="text" placeholder="Search.." name="search">
+            <input type="text" placeholder="Search..." name="search">
         </div>
 
         <div class="sort-by">
@@ -71,54 +73,68 @@
             </p>
             
         </div>
+        
 
     </div>
+    <br><br><br>
 
-
-
-
-
-    <!--LATEST NEWS-->
-
-    <!--div class="featured">
-        <br><br><br><br><br><br>
-        <div class= "container-latest">
-
-            <div class="separator"></div>
-            <h1><span class="featured-text">LATEST NEWS</span></h1>
-            <div class="separator"></div>
-            <br><br><br><br><br>
-
-            <div class="item" >
-                <div class="column ">
-                  <div class="inner">
-
-                    <div class="article-container">
-                        <div class="featured-image"> 
-                            <a href="#"><img class="imgf" alt="" src="images/6cro0q.jpg" /></a>
-                        </div>
-                        <h3 class="featured-title" style="color:black; margin-bottom: 10px">Lorem ipsum dolor d3d3d2g454g4gfefef45g45g54g45g1</h3>
-                        <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written in: 20.10.2022</i>
-                        <h4 class="description" style="color:rgb(190, 190, 190); margin-top: 70px">Some description of the news article...</h4>
+    <div class="all-news">
+        <div class="item" >
+            <div class="column ">
+              <div class="inner">
+                {% for news in display_news|dictsort:"title" %}
+                <div class="article-container">
+                    <div class="news-image"> 
+                        <a href="#"><img class="imgf" alt="" src="{{news.img.url}}" /></a>
                     </div>
-
-                    <br><br><br><br><br>
-
-                    <div class="article-container">
-                        <div class="featured-image"> 
-                            <a href="#"><img class="imgf" alt="" src="images/6cro0q.jpg" /></a>
-                        </div>
-                        <h3 class="featured-title" style="color:black; margin-bottom: 10px">Lorem ipsum dolor sid amet</h3>
-                        <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written in: 20.10.2022</i>
-                        <h4 class="description" style="color:rgb(190, 190, 190); margin-top: 70px">Some description of the news article...</h4>
-                    </div>
-
-                  </div>
+                    <h3 class="news-title" style="color:black; margin-bottom: 10px">{{news.title}}</h3>
+                    <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written in: {{news.written_on}}</i>
+                    <h2 class="description" style="color:rgb(190, 190, 190)">{{news.description_brief}}</h2>
                 </div>
-            </div>
+                <br><br><br><br><br>
+                {% endfor %}
 
+                <div>
+                    <style>
+
+                        h2{
+        
+                            margin-left: 2px;
+                            width: 100%;
+                            font-size: 15px;
+        
+                        }
+        
+                        @media only screen and (min-width: 768px){
+        
+                            h2{
+        
+                                margin-left: 200px;
+                                width: 100%;
+                                font-size: 15px;
+        
+                            }
+        
+                        }
+        
+                        </style>
+
+                        {% for message in messages %}
+                            {% if "search" in message.tags %}
+                            <h2>{{message}}</h2>
+                            {% endif%}
+                        {% endfor %}
+
+                        <br><br><br><br><br><br><br><br><br><br><br>
+                </div>
+
+              </div>
+            </div>
         </div>
-    </div-->
+    </div>
+    </form>
+
+
 
 
     <!--SCROLL UP-->
@@ -196,7 +212,9 @@
 
                 </style>
                 {% for message in messages %}
+                    {% if "email" in message.tags %}
                     <h4>{{message}}</h4>
+                    {% endif%}
                 {% endfor %}
             </div>
                 

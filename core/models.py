@@ -25,3 +25,12 @@ class News(models.Model):
     description_brief = models.CharField(max_length = 150)
     access_count = models.IntegerField()
     id = models.IntegerField(primary_key=True)
+
+class Comments(models.Model):
+    id_news = models.ForeignKey(News, on_delete=models.CASCADE)
+    date_comm = models.DateTimeField(default=datetime.now)
+    user = models.CharField(max_length = 100)
+    comment = models.TextField(max_length = 500)
+    
+    def __str__(self):
+        return self.user

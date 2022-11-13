@@ -6,16 +6,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/news-article.css' %}">
     <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
     <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
     <link href="{% static 'https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap' %}" rel="stylesheet">
     <link rel="icon" type="image/png" href="{% static 'images/logo-icon-neg.ico' %}" sizes="32x32"/>
-    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">    
     <title>WeirdoWorld</title>
 </head>
 <body>
-
 
 
 
@@ -59,105 +57,197 @@
     </div>
 
 
-
-
-    <!--CONTACT SECTION-->
-
-    <div class="container-contact">
-
-        <p>💼Office</p><span>Stockholm, Sweden</span>
-        <br><br><br>
-        <p>Press</p><span>press@weirdoworld.com</span>
-        <br><br><br>
-        <p>Feedback</p><span>publicfeedback@weirdoworld.com</span>
-        <br><br><br>
-        <p>Licensing</p><span>permission@weirdoworld.com</span>
-        <br><br><br>
-        <img class="fade" src="{% static 'images/cats.jpg' %}">
-        
-    </div>
-
-    <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="upload-section" id="upload-section">
-    
-        <i>Share your story with us</i>
-        <p>Please upload your files here:
-        <label for="myfile" class="custom-file-upload">
-            <i class="fa-solid fa-cloud-arrow-up"  style="font-size:24px"></i> Choose files
-        </label>
-        <!-- <input class="browse" type="file" accept="image/*" id="myfile" name="myfile" onchange="preview()" multiple></p><br><br> -->
-        <input class="browse" type="file" accept="image/*" id="myfile" name="myfile" multiple></p><br><br>
-        <!-- <h5 id="num-of-files" style="color:black; font-size: 15px!important">No Files Chosen</h5>
-        <div id="images" name="images"></div> -->
-        <div>
-            <style>
-                .selection{
-
-                    margin-left: 10px!important;
-                    max-height: 70px!important;
-                }
-
-                @media only screen and (min-width: 768px){
-
-                    .selection{
-
-                        margin-left: 10px!important;
-                        max-height: 90px!important;
+   <!-- SEPCIFIC NEWS ARTICLE -->
+   <div class="article">
+        <style>
+            h2{
+                margin-left: 120px;
+                margin-top: 70px;
+                margin-bottom: 10px;
+                font-size: 50px;
+                width: 80%;
+                text-align: left;
+            }
+            i{
+                margin-left: 120px;
+                font-size: 15px;
+                width: 80%;
+                text-align: left;
+                color:rgb(190, 190, 190);
+            }
+            .article-pic{
+                margin-top:50px;
+                margin-left: 120px;
+                width: 550px;
+                height: 300px;
+                -webkit-animation-name: fade;
+                animation-name: fade;
+                -webkit-animation-duration: 1.5s;
+                animation-duration: 1.5s;
+            }
+            @-webkit-keyframes fade {
+                    from {
+                        opacity: 0.4;
+                    }
+                    to {
+                        opacity: 1;
+                    }
                     }
 
+                    @keyframes fade {
+                    from {
+                        opacity: 0.4;
+                    }
+                    to {
+                        opacity: 1;
+                    }
                 }
-            </style>
-            {% if file_url %}
-                <img class="selection" src="{{ file_url }}">
-            {% endif %}
-        </div>
-        <p>‼️Make sure to only add one picture!</p>
-        <p style="margin-top:10px">‼️The image size should not exceed 2MB!</p>
-
-    </div>
-
-    <div class="add-text">
-        <br><br><br><br>
-        <p>Please write some text below (optional):</p>
-        <textarea id="txt" name="txt"></textarea><br><br>
-    </div>
-
-    <div class="submit">
-        <input type="submit" value="Submit">
-    </div>
-
-    <div>
-        <style>
-
-            h5{
-
-                color: red;
+            
+            .descr{
                 margin-left: 120px;
-                font-size: 20px;
-
+                width: 78%;
             }
 
             @media only screen and (min-width: 768px){
 
+                h2{
+                    margin-left: 120px;
+                    margin-top: 50px;
+                    margin-bottom: 10px;
+                    font-size: 50px;
+                    width: 80%;
+                    text-align: left;
+                }
+                i{
+                    margin-left: 120px;
+                    font-size: 18px;
+                    width: 80%;
+                    text-align: left;
+                    color:rgb(190, 190, 190);
+                }
+                .article-pic{
+                    margin-top:30px;
+                    margin-left: 250px;
+                    width: 990px;
+                    height: 600px;
+                    float:block;
+                    -webkit-animation-name: fade;
+                    animation-name: fade;
+                    -webkit-animation-duration: 1.5s;
+                    animation-duration: 1.5s;
+                }
+                @-webkit-keyframes fade {
+                    from {
+                        opacity: 0.4;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                    }
+
+                    @keyframes fade {
+                    from {
+                        opacity: 0.4;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
+                .descr{
+                    margin-left: 120px;
+                    font-size: 25px;
+                    width: 85%;
+                }
+            }
+        </style>
+        <h2>{{ news_article.title }}</h2>
+        <i>Written on {{ news_article.written_on }}</i>
+        <br><br><br>
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img class="socials-0-img" src="{% static 'images/icons8-facebook-96.png' %}"></a>
+            <a href="https://www.instagram.com/"><img class="socials-0-img" src="{% static 'images/icons8-instagram-96.png' %}"></a>
+            <a href="https://www.tiktok.com/en/"><img class="socials-0-img" src="{% static 'images/icons8-tiktok-96.png' %}"></a>
+            <a href="https://www.youtube.com/"><img class="socials-0-img" src="{% static 'images/icons8-youtube-96.png' %}"></a>
+            <a href="https://twitter.com/?lang=en"><img class="socials-0-img" src="{% static 'images/icons8-twitter-96.png' %}"></a>
+        </div>
+
+        <div class="link-container">
+            <input style="border: 0; background-color: transparent; outline:none; margin-bottom:25px; font-size:15px; font-family: Karla;" type="text" class="copy-link-input" id="copy-link-input" value="https://example.com/share" readonly>
+            <button type="button" class="copy-btn">copy</button>
+        </div>
+        <br><br><br>
+        <img class="article-pic" src ="{{ news_article.img.url }}">
+        <br><br><br><br><br>
+        <p class="descr">{{ news_article.description_brief }}</p>
+   </div>
+
+   <br><br><br><br><br><br>
+   <div class="comments">
+    <div class= "container-comments">
+        <div class="separator"></div>
+        <h1><span class="comments-text">COMMENTS</span></h1>
+        <div class="separator"></div>
+
+        {% for comm in comments %}
+        <div class="comment-list">
+            <p class="comm-user">@{{ comm.user }} says:</p>
+            <i class="comm-date">{{ comm.date_comm }}</i>
+            <h3 class="comm-txt">{{ comm.comment }}</h3>
+        </div>
+        {% endfor %}
+
+        <br><br><br><br><br><br><br><br>
+        <div class="separator"></div>
+
+        <form action="{% url 'news_article' news_article.id %}" method="POST">
+        {% csrf_token %}
+            <div class="comment-add">
+                <div class="comm-field">
+                        <p>Post your opinion</p>
+                        <textarea id="comment" name="comment"></textarea>
+                </div>
+                <div class="row-post">
+                    <input type="submit" value="Post comment">
+                </div>
+            </div>
+
+            <div>
+                <style>
+
                 h5{
 
-                    margin-left: 120px;
+                    margin-left: 50px;
+                    width: 100%;
                     color: red;
+                    font-size: 20px;
+
                 }
 
-            }
+                @media only screen and (min-width: 768px){
 
-            </style>
+                    h5{
 
+                        margin-left: 110px;
+                        margin-top: 50px;
+                        color: red;
+                        width: 100%;
+                    }
+
+                }
+
+                </style>
             {% for message in messages %}
-                {% if "footage" in message.tags %}
-                    <h5>{{ message }}</h5>
-                {% endif %}
+            {% if "empty_comm" in message.tags %}
+                <h5>{{message}}</h5>
+            {% elif "account" in message.tags%}
+                <h5>{{message}}</h5>
+            {% endif %}
             {% endfor %}
+            </div>
+        </form>
+
     </div>
-    
-    </form>
+   </div>
 
 
 
@@ -166,7 +256,7 @@
     <button onclick="topFunction()" id="scrollbtn" title="Go to top"><img class="scroll" src="{% static 'images/up.png' %}"></button>
 
     
-    
+
 
      <!--FOOTER-->
 
@@ -201,7 +291,7 @@
         
         <div class="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
 
-        <form action="{% url 'contact' %}" method="POST" class="form1" name="form1"><!--onsubmit="return required()-->
+        <form action="{% url 'news_article' news_article.id %}" method="POST" class="form1" name="form1"><!--onsubmit="return required()-->
             {% csrf_token %}
             
             <div class="row">
@@ -237,14 +327,15 @@
                 </style>
                 {% for message in messages %}
                     {% if "email" in message.tags %}
-                        <h4>{{message}}</h4>
-                    {% endif %}
+                    <h4>{{message}}</h4>
+                    {% endif%}
                 {% endfor %}
             </div>
                 
         </form>
 
      </div>
+
 
 
 
@@ -263,7 +354,7 @@
                 <div style="text-align: center; font-size: 30px; margin-top:40px;">[ Log-in ]</div>
 
                 <div class="container-modal">
-                    <form action="{% url 'contact' %}" method="POST">
+                    <form action="{% url 'news_article' news_article.id %}" method="POST">
                         {% csrf_token %}
                             <div class="row">
                                 <div class="col-25">
@@ -297,7 +388,8 @@
     
                             </div>
 
-                        <div style="text-align: center; margin-top:50px"><span>Don't have an account yet?</span><a href='sign_up' style="text-decoration: none"><span class="sign-up-btn"> Sign up now.</span></a></div>                    
+                        <div style="text-align: center; margin-top:50px"><span>Don't have an account yet?</span><a href='sign_up' style="text-decoration: none"><span class="sign-up-btn"> Sign up now.</span></a></div>
+                    
                     </form>
             </div>
         
@@ -308,13 +400,28 @@
 
     
 
-    
     <!--script-->
     <script src="{% static 'js/menu.js' %}"></script>
     <script src="{% static 'js/login-modal.js' %}"></script>
-    <script src="{% static 'js/upload-img.js' %}"></script>
     <script src="{% static 'js/scroll-up.js' %}"></script>
+    <script>
+        document.querySelectorAll(".article .link-container").forEach((copyLinkParent) => {
+        const inputField = copyLinkParent.querySelector(".article .copy-link-input");
+        const copyButton = copyLinkParent.querySelector(".article .copy-btn");
+        const text = inputField.value;
 
+        inputField.addEventListener("focus", () => inputField.select());
+
+        copyButton.addEventListener("click", () => {
+            inputField.select();
+            navigator.clipboard.writeText(text);
+
+            inputField.value = "Copied!";
+            setTimeout(() => (inputField.value = text), 2000);
+        });
+    });
+
+    </script>
 
 
 

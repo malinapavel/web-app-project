@@ -86,12 +86,14 @@
               <div class="inner">
                 {% for news in display_news %}
                 <div class="article-container">
-                    <div class="news-image"> 
-                        <a href="#"><img class="imgf" alt="" src="{{news.img.url}}" /></a>
-                    </div>
-                    <h3 class="news-title" style="color:black; margin-bottom: 10px">{{news.title}}</h3>
-                    <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written in: {{news.written_on}}</i>
-                    <h2 class="description" style="color:rgb(190, 190, 190)">{{news.description_brief}}</h2>
+                    <a href="{% url 'news_article' news.id %}" style=" text-decoration: none">
+                        <div class="news-image"> 
+                            <img class="imgf" alt="" src="{{news.img.url}}" />
+                        </div>
+                        <h3 class="news-title" style="color:black; margin-bottom: 10px">{{news.title}}</h3>
+                        <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written on {{news.written_on}}</i>
+                        <h2 class="description" style="color:rgb(190, 190, 190)">{{news.description_brief}}</h2>
+                    </a>
                 </div>
                 <br><br><br><br><br>
                 {% endfor %}

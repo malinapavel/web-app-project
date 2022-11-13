@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from . models import NewsletterSubscribers, Footage, News
+from . models import NewsletterSubscribers, Footage, News, Comments
 from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
@@ -114,8 +114,12 @@ def upload(request):
                 description = request.POST['txt']
 
                 if user != "":
-                    Footage.objects.create(user=user, img=file_url, description=description)
-                    return render(request, 'contact.html', {'file_url': file_url})
+                    if img.size > 1048576*2:
+                        messages.info(request, 'Sorry, but the size of the image you just uploaded exceeds 2MB. 😭', extra_tags='footage')
+                        return render(request, 'contact.html')
+                    else:
+                        Footage.objects.create(user=user, img=file_url, description=description)
+                        return render(request, 'contact.html', {'file_url': file_url})
                 else:
                     messages.info(request, 'Sorry, but you need an account to send us footage. 😭', extra_tags='footage')
                     return render(request, 'contact.html')
@@ -239,3 +243,50 @@ def all_news(request):
             return render(request, 'all-news.html', {'display_news' : sort_pop_news})
 
     return render(request, 'all-news.html', {'display_news' : allnews})
+
+
+def news_article(request, id):
+    article = News.objects.get(id=id)
+    comment_list = Comments.objects.filter(id_news=article.id).values()
+
+    if request.method == 'POST':
+        if 'email-sub' in request.POST:
+            email = request.POST['email-sub']
+            if '@' in email:
+                if NewsletterSubscribers.objects.filter(email = email).exists():
+                    messages.info(request, 'You already subscribed to the newsletter.', extra_tags='email')
+                
+                else: 
+                    messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
+                    NewsletterSubscribers.objects.create(email=email)
+            return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+
+        elif 'username' in request.POST and 'password' in request.POST:
+            username = request.POST['username']
+            password = request.POST['password']
+
+            user = auth.authenticate(username=username, password=password)
+
+            if user is not None:
+                auth.login(request, user)
+                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+            else:
+                messages.info(request, 'ffffff', extra_tags='login')
+                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+        elif 'comment' in request.POST:
+            comment = request.POST['comment']
+            username = request.user.username
+            if username != "":
+                    if comment != 0:
+                        comm = Comments.objects.create(id_news=article, user=username, comment=comment)
+                        comm.save()
+                        return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+                    else:
+                        messages.info(request, 'You cannot send an empty comment.', extra_tags='empty_comm')
+                        return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+            else:
+                messages.info(request, 'Sorry, but you need an account to post a comment. 😭', extra_tags='account')
+                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+
+    return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+

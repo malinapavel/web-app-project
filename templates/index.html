@@ -70,34 +70,10 @@
         </div>
     </div>
 
+    <br><br><br>
     
     <div class="slideshow-container">
 
-        <br><br><br><br>
-        <!-- <div class="slide fade">
-            <img src="{% static 'images/6cro0q.jpg' %}" style="width:700px; height:400px; margin-left:-300px">
-            <div class="text"></div>
-        </div>
-  
-        <div class="slide fade">
-            <img src="{% static 'images/6cro0q.jpg' %}" style="width:700px; height:400px; margin-left:-300px">
-            <div class="text"></div>
-        </div>
-  
-        <div class="slide fade">
-            <img src="{% static 'images/6cro0q.jpg' %}" style="width:700px; height:400px; margin-left:-300px">
-            <div class="text"></div>
-        </div>
-
-        <div class="slide fade">
-            <img src="{% static 'images/6cro0q.jpg' %}" style="width:700px; height:400px; margin-left:-300px">
-            <div class="text"></div>
-        </div>
-
-        <div class="slide fade">
-            <img src="{% static 'images/6cro0q.jpg' %}" style="width:700px; height:400px; margin-left:-300px">
-            <div class="text"></div>
-        </div> -->
         {% for news in display_news|dictsortreversed:"access_count" %}
         <style>
             h3{
@@ -122,10 +98,12 @@
             }
         </style>
         <div class="slide fade">
+        <a href="{% url 'news_article' news.id %}">
             <img src="{{news.img.url}}" style="width:700px; height:400px; margin-left:-300px">
             <div class="text">
                 <h3>{{news.title}}</h3>
             </div>
+        </a>
         </div>
         {% endfor %}
 
@@ -170,36 +148,18 @@
                 <div class="column ">
                   <div class="inner">
 
-                    <!-- <div class="article-container">
-                        <div class="featured-image"> 
-                            <a href="#"><img class="imgf" alt="" src="{% static 'images/6cro0q.jpg' %}" /></a>
-                        </div>
-                        <h3 class="featured-title" style="color:black; margin-bottom: 10px">Lorem ipsum dolor d3d3d2g454g4gfefef45g45g54g45g1</h3>
-                        <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written in: 20.10.2022</i>
-                        <h4 class="description" style="color:rgb(190, 190, 190); margin-top: 70px">Some description of the news article...</h4>
-                    </div>
-
-                    <br><br><br><br><br>
-
-                    <div class="article-container">
-                        <div class="featured-image"> 
-                            <a href="#"><img class="imgf" alt="" src="{% static 'images/6cro0q.jpg' %}" /></a>
-                        </div>
-                        <h3 class="featured-title" style="color:black; margin-bottom: 10px">Lorem ipsum dolor sid amet</h3>
-                        <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written in: 20.10.2022</i>
-                        <h4 class="description" style="color:rgb(190, 190, 190); margin-top: 70px">Some description of the news article...</h4>
-                    </div> -->
-                    
                     {% for news in display_news %}
                     <div class="article-container">
                         <div class="featured-image"> 
-                            <a href="#"><img class="imgf" alt="" src="{{news.img.url}}" /></a>
+                            <a href="{% url 'news_article' news.id %}" style="text-decoration: none; color: black">
+                                <img class="imgf" alt="" src="{{news.img.url}}">
                         </div>
                         <h3 class="featured-title" style="color:black; margin-bottom: 10px">{{news.title}}</h3>
+                        </a>
                         <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written on {{news.written_on}}</i>
                         <h2 class="description" style="color:rgb(190, 190, 190)">{{news.description_brief}}</h2>
                     </div>
-                    <br><br><br><br><br>
+                    <br>
                     {% endfor %}
 
                   </div>

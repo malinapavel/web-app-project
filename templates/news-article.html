@@ -105,7 +105,7 @@
             
             .descr{
                 margin-left: 120px;
-                width: 78%;
+                width: 74%;
             }
 
             @media only screen and (min-width: 768px){
@@ -155,8 +155,8 @@
                 }
                 .descr{
                     margin-left: 120px;
-                    font-size: 25px;
-                    width: 85%;
+                    font-size: 23px;
+                    width: 83%;
                 }
             }
         </style>
@@ -178,7 +178,9 @@
         <br><br><br>
         <img class="article-pic" src ="{{ news_article.img.url }}">
         <br><br><br><br><br>
-        <p class="descr">{{ news_article.description_brief }}</p>
+        {% for art in article_txt %}
+            <p class="descr">{{ art }}</p>
+        {% endfor %}
    </div>
 
    <br><br><br><br><br><br>

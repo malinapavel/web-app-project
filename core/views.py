@@ -4,10 +4,21 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from . models import NewsletterSubscribers, Footage, News, Comments
 from django.core.files.storage import FileSystemStorage
+from django.core.files import File
 
 # Create your views here.
 def index(request):
-    allnews = News.objects.all()  
+    allnews = News.objects.all() 
+
+    for news in allnews:
+        article_txt_brief = ""
+        with open(news.description.path,'r') as file:
+            tmp = file.readline()
+
+        article_txt_brief = str(tmp[:400] + " . . . . . .")
+        news.description_brief = article_txt_brief
+        news.save(update_fields=['description_brief'])
+
     if request.method == 'POST':
         if 'email-sub' in request.POST:
             email = request.POST['email-sub']
@@ -247,7 +258,18 @@ def all_news(request):
 
 def news_article(request, id):
     article = News.objects.get(id=id)
+    article.access_count += 1
+    article.save()
     comment_list = Comments.objects.filter(id_news=article.id).values()
+
+    article_txt = []
+    with open(article.description.path,'r') as file:
+        tmp = file.readlines()
+        for t in tmp:
+            if t[-1] == '\n':
+                article_txt.append(t)
+                article_txt.append("\n")
+                
 
     if request.method == 'POST':
         if 'email-sub' in request.POST:
@@ -259,7 +281,7 @@ def news_article(request, id):
                 else: 
                     messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
                     NewsletterSubscribers.objects.create(email=email)
-            return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+            return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
 
         elif 'username' in request.POST and 'password' in request.POST:
             username = request.POST['username']
@@ -269,10 +291,10 @@ def news_article(request, id):
 
             if user is not None:
                 auth.login(request, user)
-                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
             else:
                 messages.info(request, 'ffffff', extra_tags='login')
-                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
         elif 'comment' in request.POST:
             comment = request.POST['comment']
             username = request.user.username
@@ -280,13 +302,13 @@ def news_article(request, id):
                     if comment != 0:
                         comm = Comments.objects.create(id_news=article, user=username, comment=comment)
                         comm.save()
-                        return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+                        return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
                     else:
                         messages.info(request, 'You cannot send an empty comment.', extra_tags='empty_comm')
-                        return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+                        return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
             else:
                 messages.info(request, 'Sorry, but you need an account to post a comment. 😭', extra_tags='account')
-                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
 
-    return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list})
+    return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
 

@@ -23,8 +23,14 @@ class News(models.Model):
     title = models.CharField(max_length = 150)
     written_on = models.DateTimeField(default=datetime.now)
     description_brief = models.CharField(max_length = 150)
+    description = models.FileField(null=True)
     access_count = models.IntegerField()
     id = models.IntegerField(primary_key=True)
+
+    def incrementViewCount(self):
+        self.access_count += 1
+        self.save()
+
 
 class Comments(models.Model):
     id_news = models.ForeignKey(News, on_delete=models.CASCADE)

@@ -15,6 +15,39 @@
 </head>
 <body>
 
+    <div>
+    {% if "Hoia" in news_article.title %}
+        <script>
+            let scrollerID;
+            let paused = true;
+            let speed = 8; 
+            let interval = speed * 100;
+
+            function startScroll(){
+                let id = setInterval(function() {
+                    window.scrollBy(0, 3000);
+                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight-2500) {
+                        // Reached end of page
+                        stopScroll();
+                        window.scrollBy(0, -2800);
+                        window.scrollBy(0, -800);
+                    }
+                }, interval);
+                return id;
+            }
+
+            function stopScroll() {
+                clearInterval(scrollerID);
+            }
+
+            document.body.addEventListener('load', function (event)
+            {
+                scrollerID = startScroll();
+
+            }, true);
+        </script>
+    {% endif %}
+    </div>
 
 
     <!--MENU BAR-->
@@ -35,16 +68,16 @@
                 <img id="mob-exit" class="mobile-menu-exit" class="close" src="{% static 'images/x-symbol.png' %}" alt="Close mobile menu" style="width:20px; height:20px; padding: 1% 2%">
                 
                 <ul class="primary-nav" style="list-style: none">
-                    <li><a href='index'><span>[ Home ]</span></a></li>
-                    <li><a href='all_news'><span>[ All news ]</span></a></li>
-                    <li><a href='about_us'><span>[ About Us ]</span></a></li>
-                    <li><a href='contact'><span>[ Contact ]</span></a></li>
+                    <li><a href='/index'><span>[ Home ]</span></a></li>
+                    <li><a href='/all_news'><span>[ All news ]</span></a></li>
+                    <li><a href='/about_us'><span>[ About Us ]</span></a></li>
+                    <li><a href='/contact'><span>[ Contact ]</span></a></li>
                     
                 </ul>
 
                 <ul class="secondary-nav" style="list-style: none">
                     {% if request.user.is_authenticated %}
-                        <li style="margin-left: -290px; margin-top: -2px"><a href='log_out'><span>[ Log-out ]</span></a></li>
+                        <li style="margin-left: -290px; margin-top: -2px"><a href='/log_out'><span>[ Log-out ]</span></a></li>
                         <li style="margin-left: -300px; margin-top: -2px"><a href="#"><span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span></a></li> 
                         {% else %}
                         <li id="modalbtn" style="margin-left: -400px; margin-top: -2px"><a href="#"><span>[ Log-in ]</span></a></li>
@@ -104,8 +137,9 @@
                 }
             
             .descr{
-                margin-left: 120px;
-                width: 74%;
+                margin-left: 50px;
+                width: 88%;
+                font-size: 20px;
             }
 
             @media only screen and (min-width: 768px){
@@ -184,12 +218,38 @@
    </div>
 
    <br><br><br><br><br><br>
-   <div class="comments">
+   <div class="comments" id="comments">
     <div class= "container-comments">
         <div class="separator"></div>
         <h1><span class="comments-text">COMMENTS</span></h1>
         <div class="separator"></div>
 
+        <div>
+            <style>
+
+                em{
+
+                    margin-left: 50px;
+                    width: 100%;
+                    font-size: 20px;
+
+                }
+
+                @media only screen and (min-width: 768px){
+
+                    em{
+
+                        margin-left: 110px;
+                        width: 100%;
+                        font-size: 20px;
+                    }
+
+                }
+
+                </style>
+            <br><br>
+            <em>{{nr_comm}} comment(s)</em>
+        </div>
         {% for comm in comments %}
         <div class="comment-list">
             <p class="comm-user">@{{ comm.user }} says:</p>
@@ -201,7 +261,7 @@
         <br><br><br><br><br><br><br><br>
         <div class="separator"></div>
 
-        <form action="{% url 'news_article' news_article.id %}" method="POST">
+        <form action="{% url 'news_article' news_article.id %}#comments" method="POST">
         {% csrf_token %}
             <div class="comment-add">
                 <div class="comm-field">
@@ -264,12 +324,13 @@
 
      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
      <div class="footer">
-        <a href='about_us#terms-and-cond' style="text-decoration: none; color: black"><p>[ Terms and conditions ]</p></a>
-        <a href='about_us#whorwe' style="text-decoration: none; color: black"><p>[ About us ]</p></a>
-        <a href='about_us#deontology' style="text-decoration: none; color: black"><p>[ Code of Deontology ]</p></a>
-        <a href='about_us#writers' style="text-decoration: none; color: black"><p>[ All writers ]</p></a>
-        <a href='contact' style="text-decoration: none; color: black"><p>[ Contact ]</p></a>
-        <a href='contact#upload-section' style="text-decoration: none; color: black"><p>[ Send footage ]</p></a>
+        <a href='/about_us#terms-and-cond' style="text-decoration: none; color: black"><p>[ Terms and conditions ]</p></a>
+        <a href='/about_us#whorwe' style="text-decoration: none; color: black"><p>[ About us ]</p></a>
+        <a href='/about_us#deontology' style="text-decoration: none; color: black"><p>[ Code of Deontology ]</p></a>
+        <a href='/about_us#writers' style="text-decoration: none; color: black"><p>[ All writers ]</p></a>
+        <a href='/contact' style="text-decoration: none; color: black"><p>[ Contact ]</p></a>
+        <a href='/contact#upload-section' style="text-decoration: none; color: black"><p>[ Send footage ]</p></a>
+
         <div class="socials-1">
 
             <a href="https://www.facebook.com/"><img class="socials-1-img" src="{% static 'images/icons8-facebook-96.png' %}"></a>
@@ -291,9 +352,9 @@
             
         </div>
         
-        <div class="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
+        <div class="subscribe" id="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
 
-        <form action="{% url 'news_article' news_article.id %}" method="POST" class="form1" name="form1"><!--onsubmit="return required()-->
+        <form action="{% url 'news_article' news_article.id %}#subscribe" method="POST" class="form1" name="form1"><!--onsubmit="return required()-->
             {% csrf_token %}
             
             <div class="row">
@@ -424,8 +485,6 @@
     });
 
     </script>
-
-
 
 </body>
 </html>

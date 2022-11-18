@@ -77,7 +77,8 @@
         
     </div>
 
-    <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+    <div id="upload"></div>
+    <form action="{% url 'upload' %}#upload" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="upload-section" id="upload-section">
     
@@ -199,9 +200,9 @@
             
         </div>
         
-        <div class="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
+        <div class="subscribe" id="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
 
-        <form action="{% url 'contact' %}" method="POST" class="form1" name="form1"><!--onsubmit="return required()-->
+        <form action="{% url 'contact' %}#subscribe" method="POST" class="form1" name="form1"><!--onsubmit="return required()-->
             {% csrf_token %}
             
             <div class="row">

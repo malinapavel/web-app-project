@@ -293,9 +293,9 @@
             
         </div>
         
-        <div class="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
+        <div class="subscribe" id="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
 
-        <form action="{% url 'about_us' %}" method="POST" class="form1" name="form1"><!--onsubmit="return required()-->
+        <form action="{% url 'about_us' %}#subscribe" method="POST" class="form1" name="form1"><!--onsubmit="return required()-->
             {% csrf_token %}
             
             <div class="row">

@@ -24,7 +24,7 @@ def index(request):
             email = request.POST['email-sub']
             if '@' in email:
                 if NewsletterSubscribers.objects.filter(email = email).exists():
-                    messages.info(request, 'You already subscribed to the newsletter.', extra_tags='email')
+                    messages.info(request, 'You have already subscribed to the newsletter.', extra_tags='email')
                 
                 else: 
                     messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
@@ -52,6 +52,16 @@ def index(request):
 
 def index2(request):
     allnews = News.objects.all()  
+
+    for news in allnews:
+        article_txt_brief = ""
+        with open(news.description.path,'r') as file:
+            tmp = file.readline()
+
+        article_txt_brief = str(tmp[:400] + " . . . . . .")
+        news.description_brief = article_txt_brief
+        news.save(update_fields=['description_brief'])
+        
     return render(request, 'index.html',{'display_news' : allnews})
 
 
@@ -62,7 +72,7 @@ def about_us(request):
             email = request.POST['email-sub']
             if '@' in email:
                 if NewsletterSubscribers.objects.filter(email = email).exists():
-                    messages.info(request, 'You already subscribed to the newsletter.', extra_tags='email')
+                    messages.info(request, 'You have already subscribed to the newsletter.', extra_tags='email')
                 
                 else: 
                     messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
@@ -91,7 +101,7 @@ def contact(request):
             email = request.POST['email-sub']
             if '@' in email:
                 if NewsletterSubscribers.objects.filter(email = email).exists():
-                    messages.info(request, 'You already subscribed to the newsletter.', extra_tags='email')
+                    messages.info(request, 'You have already subscribed to the newsletter.', extra_tags='email')
                 
                 else: 
                     messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
@@ -147,7 +157,7 @@ def sign_up(request):
             email = request.POST['email-sub']
             if '@' in email:
                 if NewsletterSubscribers.objects.filter(email = email).exists():
-                    messages.info(request, 'You already subscribed to the newsletter.', extra_tags='email')
+                    messages.info(request, 'You have already subscribed to the newsletter.', extra_tags='email')
         
                 else: 
                     messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
@@ -209,7 +219,7 @@ def all_news(request):
             email = request.POST['email-sub']
             if '@' in email:
                 if NewsletterSubscribers.objects.filter(email = email).exists():
-                    messages.info(request, 'You already subscribed to the newsletter.', extra_tags='email')
+                    messages.info(request, 'You have already subscribed to the newsletter.', extra_tags='email')
                 
                 else: 
                     messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
@@ -276,12 +286,12 @@ def news_article(request, id):
             email = request.POST['email-sub']
             if '@' in email:
                 if NewsletterSubscribers.objects.filter(email = email).exists():
-                    messages.info(request, 'You already subscribed to the newsletter.', extra_tags='email')
+                    messages.info(request, 'You have already subscribed to the newsletter.', extra_tags='email')
                 
                 else: 
                     messages.info(request, 'Thank you, we are glad that you enjoy WeirdoWorld!💗', extra_tags='email')
                     NewsletterSubscribers.objects.create(email=email)
-            return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
+            return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt, 'nr_comm': len(comment_list)})
 
         elif 'username' in request.POST and 'password' in request.POST:
             username = request.POST['username']
@@ -291,24 +301,24 @@ def news_article(request, id):
 
             if user is not None:
                 auth.login(request, user)
-                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
+                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt, 'nr_comm': len(comment_list)})
             else:
                 messages.info(request, 'ffffff', extra_tags='login')
-                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
+                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt, 'nr_comm': len(comment_list)})
         elif 'comment' in request.POST:
             comment = request.POST['comment']
             username = request.user.username
             if username != "":
-                    if comment != 0:
+                    if comment != "":
                         comm = Comments.objects.create(id_news=article, user=username, comment=comment)
                         comm.save()
-                        return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
+                        return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt, 'nr_comm': len(comment_list)})
                     else:
                         messages.info(request, 'You cannot send an empty comment.', extra_tags='empty_comm')
-                        return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
+                        return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt, 'nr_comm': len(comment_list)})
             else:
                 messages.info(request, 'Sorry, but you need an account to post a comment. 😭', extra_tags='account')
-                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
+                return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt, 'nr_comm': len(comment_list)})
 
-    return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt})
+    return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt, 'nr_comm': len(comment_list)})
 

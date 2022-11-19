@@ -13,5 +13,5 @@ urlpatterns=[
     path('log_out', views.log_out, name='log_out'),
     path('upload', views.upload, name='upload'),
     path('<int:id>/', views.news_article, name='news_article'),
-    #path('<int:id>/', views.comment_section, name='comment_section')
+    path('report_comm', views.report_comm, name='report_comm'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

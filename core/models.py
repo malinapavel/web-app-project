@@ -23,7 +23,7 @@ class News(models.Model):
     title = models.CharField(max_length = 150)
     written_on = models.DateTimeField(default=datetime.now)
     description_brief = models.CharField(max_length = 150)
-    description = models.FileField(null=True)
+    description = models.FileField(default='text_articles/dummy.txt')
     access_count = models.IntegerField()
     id = models.IntegerField(primary_key=True)
 
@@ -33,10 +33,13 @@ class News(models.Model):
 
 
 class Comments(models.Model):
+    id=models.IntegerField(primary_key=True)
     id_news = models.ForeignKey(News, on_delete=models.CASCADE)
     date_comm = models.DateTimeField(default=datetime.now)
     user = models.CharField(max_length = 100)
     comment = models.TextField(max_length = 500)
+    pending_req = models.BooleanField(default=False, editable=True)
+    reason_report = models.TextField(max_length = 100, default='.', editable=True)
     
     def __str__(self):
         return self.user

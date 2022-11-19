@@ -47,8 +47,18 @@
                 <ul class="secondary-nav" style="list-style: none">
                     {% if request.user.is_authenticated %}
                         <li style="margin-left: -290px; margin-top: -2px"><a href='log_out'><span>[ Log-out ]</span></a></li>
-                        <li style="margin-left: -300px; margin-top: -2px"><a href="#"><span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span></a></li> 
-                        {% else %}
+                        <li style="margin-left: -300px; margin-top: -2px" title="Go to admin page">
+                            {% if user.is_superuser %}
+                                <a href="/">
+                                    <span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span>
+                                </a>
+                            {% else %}
+                                <a href="#" onclick="priviledge()">
+                                    <span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span>
+                                </a>
+                            {% endif %}
+                        </li> 
+                    {% else %}
                         <li id="modalbtn" style="margin-left: -400px; margin-top: -2px"><a href="#"><span>[ Log-in ]</span></a></li>
                     {% endif %}
                 </ul>
@@ -289,6 +299,11 @@
     <script src="{% static 'js/menu.js' %}"></script>
     <script src="{% static 'js/login-modal.js' %}"></script>
     <script src="{% static 'js/scroll-up.js' %}"></script>
+    <script>
+        function priviledge(){
+            alert("Sorry, but you do not have the priviledges to access the admin's page.");
+        }
+    </script>
 
 
 

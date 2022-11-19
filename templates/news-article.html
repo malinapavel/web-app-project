@@ -11,6 +11,7 @@
     <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
     <link href="{% static 'https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap' %}" rel="stylesheet">
     <link rel="icon" type="image/png" href="{% static 'images/logo-icon-neg.ico' %}" sizes="32x32"/>
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css"> 
     <title>WeirdoWorld</title>
 </head>
 <body>
@@ -26,11 +27,10 @@
             function startScroll(){
                 let id = setInterval(function() {
                     window.scrollBy(0, 3000);
-                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight-2500) {
+                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight-2000) {
                         // Reached end of page
                         stopScroll();
-                        window.scrollBy(0, -2800);
-                        window.scrollBy(0, -800);
+                        window.scrollBy(0, -1000);
                     }
                 }, interval);
                 return id;
@@ -78,8 +78,18 @@
                 <ul class="secondary-nav" style="list-style: none">
                     {% if request.user.is_authenticated %}
                         <li style="margin-left: -290px; margin-top: -2px"><a href='/log_out'><span>[ Log-out ]</span></a></li>
-                        <li style="margin-left: -300px; margin-top: -2px"><a href="#"><span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span></a></li> 
-                        {% else %}
+                        <li style="margin-left: -300px; margin-top: -2px" title="Go to admin page">
+                            {% if user.is_superuser %}
+                                <a href="/">
+                                    <span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span>
+                                </a>
+                            {% else %}
+                                <a href="#" onclick="priviledge()">
+                                    <span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span>
+                                </a>
+                            {% endif %}
+                        </li>                         
+                    {% else %}
                         <li id="modalbtn" style="margin-left: -400px; margin-top: -2px"><a href="#"><span>[ Log-in ]</span></a></li>
                     {% endif %}
                 </ul>
@@ -253,6 +263,11 @@
         {% for comm in comments %}
         <div class="comment-list">
             <p class="comm-user">@{{ comm.user }} says:</p>
+            <p class="comm-flag">
+                <a href="/report_comm?comm_id={{comm.id}}">
+                    <i class="fa-solid fa-flag" title="Report comment" style="cursor:pointer" name=report ></i>
+                </a>
+            </p>
             <i class="comm-date">{{ comm.date_comm }}</i>
             <h3 class="comm-txt">{{ comm.comment }}</h3>
         </div>
@@ -402,7 +417,6 @@
 
 
 
-
      <!-- LOGIN MODALl -->
 
     <div id="login-modal" class="modal">
@@ -461,6 +475,9 @@
       
     </div>
 
+
+   
+    
     
 
     <!--script-->
@@ -485,6 +502,14 @@
     });
 
     </script>
+
+    <script>
+        function priviledge(){
+            alert("Sorry, but you do not have the priviledges to access the admin's page.");
+        }
+    </script>
+    
+    
 
 </body>
 </html>

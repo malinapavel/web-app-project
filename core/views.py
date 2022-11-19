@@ -5,8 +5,12 @@ from django.contrib import messages
 from . models import NewsletterSubscribers, Footage, News, Comments
 from django.core.files.storage import FileSystemStorage
 from django.core.files import File
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
+
+comm_id_list = []
+
 def index(request):
     allnews = News.objects.all() 
 
@@ -310,8 +314,7 @@ def news_article(request, id):
             username = request.user.username
             if username != "":
                     if comment != "":
-                        comm = Comments.objects.create(id_news=article, user=username, comment=comment)
-                        comm.save()
+                        Comments.objects.create(id_news=article, user=username, comment=comment)
                         return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt, 'nr_comm': len(comment_list)})
                     else:
                         messages.info(request, 'You cannot send an empty comment.', extra_tags='empty_comm')
@@ -322,3 +325,28 @@ def news_article(request, id):
 
     return render(request, 'news-article.html', {'news_article' : article, 'comments': comment_list, 'article_txt': article_txt, 'nr_comm': len(comment_list)})
 
+
+
+def report_comm(request):
+
+    comm_id = request.GET.get('comm_id')
+    comm_id_list.append(comm_id)
+    comm = Comments.objects.filter(id=comm_id).first()
+
+    if request.method == 'POST':
+        if 'reasons' in request.POST:
+            reason = request.POST['reasons']
+            if comm_id_list != 0: comm_id = comm_id_list.pop(0)
+            comm = Comments.objects.filter(id=comm_id).first()
+            if comm is not None:
+                try:
+                    comm.pending_req = True
+                    comm.reason_report = reason
+                    comm.save()
+                except AttributeError as e:
+                    print("The value assigned to the object is Nonetype")
+            if comm_id_list != 0:
+                comm_id_list.clear()                    #leave clear for new report
+        messages.info(request, "Thank you for your feedback!💗", extra_tags='test')
+        return render(request, 'report-form.html', {'comm': comm})
+    return render(request, 'report-form.html', {'comm': comm})

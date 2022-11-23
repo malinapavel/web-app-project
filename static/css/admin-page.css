@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap");
+html, body {
+  max-width: 100%;
+  max-height: 5500px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: white;
+  margin: 0;
+  font-family: "Karla", sans-serif;
+}
+
+/*MENU BAR*/
+/*LOW RESOLUTION (MOBILE)*/
+
+.navbar {
+    background: rgb(237, 237, 237);
+    height: 80px;
+    padding: 0.5em;
+  }
+
+.navbar .container .logo{
+    padding-left: 100px;
+}
+
+.navbar .container .header-txt{
+    margin-left: 400px;
+    margin-top: -40px;
+    font-size: 20px;
+}
+
+.main{
+    margin-left: 120px;
+    margin-top: 50px;
+}
+
+.main .main-title{
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+.main .main-list{
+    margin-top: 30px;
+}
+.main .main-list span{
+    color: rgb(237, 237, 237);
+}
+.main .main-list li{
+    margin-top: 10px;
+}
+.menu-arrow{
+    padding-top: 50px;
+    margin-left: 50px;
+    font-size: 30px;
+    color: rgb(190, 190, 190);
+}
+.sidenav {
+    height: 70%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(19, 19, 19);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 200px;
+    margin-top: 95px;
+    border-radius: 3px;
+  }
+  
+  .sidenav a {
+    padding: 15px 1px 15px 40px;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(237, 237, 237);
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav .list a:hover {
+    background: black;
+  }
+  
+/*DESKTOP RESOLUTION*/
+@media only screen and (min-width: 768px){
+    .navbar {
+        background: rgb(237, 237, 237);
+        height: 80px;
+        padding: 0.5em;
+      }
+    
+    .navbar .container .logo{
+        padding-left: 100px;
+    }
+    
+    .navbar .container .header-txt{
+        margin-left: 1070px;
+        margin-top: -50px;
+        font-size: 29px;
+    }
+
+    .main{
+        margin-left: 120px;
+        margin-top: 50px;
+    }
+    
+    .main .main-title{
+        font-size: 40px;
+        margin-bottom: 80px;
+    }
+    .main .main-txt{
+        font-size: 20px;
+    }
+    .main .main-list{
+        margin-top: 30px;
+    }
+    .main .main-list span{
+        color: rgb(237, 237, 237);
+    }
+    .main .main-list li{
+        margin-top: 10px;
+        font-size: 20px;
+    }
+    .menu-arrow{
+        margin-left: 20px;
+        font-size: 40px;
+        color: rgb(190, 190, 190);
+    }
+
+}

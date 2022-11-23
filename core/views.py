@@ -143,7 +143,7 @@ def upload(request):
                         messages.info(request, 'Sorry, but the size of the image you just uploaded exceeds 2MB. 😭', extra_tags='footage')
                         return render(request, 'contact.html')
                     else:
-                        Footage.objects.create(user=user, img=file_url, description=description)
+                        Footage.objects.create(user=user, img=img, description=description)
                         return render(request, 'contact.html', {'file_url': file_url})
                 else:
                     messages.info(request, 'Sorry, but you need an account to send us footage. 😭', extra_tags='footage')
@@ -260,7 +260,7 @@ def all_news(request):
     if request.method == 'GET':
         if 'latest' in request.GET:
             latest = request.GET.get('latest')
-            sort_date_news = News.objects.all().order_by('written_on') 
+            sort_date_news = News.objects.all().order_by('-written_on')
             return render(request, 'all-news.html', {'display_news' : sort_date_news})
         elif 'popular' in request.GET:
             popular = request.GET.get('popular')
@@ -350,3 +350,54 @@ def report_comm(request):
         messages.info(request, "Thank you for your feedback!💗", extra_tags='test')
         return render(request, 'report-form.html', {'comm': comm})
     return render(request, 'report-form.html', {'comm': comm})
+
+
+def admin_page(request):
+    return render(request, 'admin-page.html')
+
+def footage_admin(request):
+    footage = Footage.objects.all()
+    pending_footage = []
+    for f in footage:
+        if f.pending_req == True:
+            pending_footage.append(f)
+            if request.method == 'POST':
+                if 'select' in request.POST:
+                    select = request.POST.getlist('select')
+                    for sel in select:
+                        solved_footage = Footage.objects.get(img=sel)
+                        solved_footage.pending_req = False
+                        solved_footage.save()
+                        if f.img == sel:
+                            pending_footage.remove(f)
+    return render(request, 'footage-admin.html', {'pending_footage': pending_footage, 'nr_pending': len(pending_footage), 'footage': footage})
+
+def comm_admin(request):
+    comments = Comments.objects.all()
+    pending_comms = []
+    for c in comments:
+        if c.pending_req == True:
+            pending_comms.append(c)
+    if request.method == 'POST':
+        if 'select' in request.POST:
+            select = request.POST.getlist('select')
+            for sel in select:
+                solved_comms = Comments.objects.get(id=sel)
+                solved_comms.pending_req = False
+                solved_comms.save()
+                pending_comms.remove(solved_comms)
+                comments.filter(id=sel).delete()
+        return render(request, 'comments-admin.html', {'pending_comms': pending_comms, 'nr_pending': len(pending_comms), 'comments': comments})
+    return render(request, 'comments-admin.html', {'pending_comms': pending_comms, 'nr_pending': len(pending_comms), 'comments': comments})
+
+def news_admin(request):
+    news = News.objects.all()
+    if request.method == 'POST':
+        if 'ID' in request.POST and 'title' in request.POST and 'myimg' in request.FILES and 'myfile' in request.FILES:
+            id = request.POST['ID']
+            title = request.POST['title']
+            img = request.FILES['myimg']
+            description = request.FILES['myfile']
+            News.objects.create(id=id, title=title, img=img, description=description, access_count=0)
+            return render(request, 'news-admin.html', {'news': news})
+    return render(request, 'news-admin.html', {'news': news})

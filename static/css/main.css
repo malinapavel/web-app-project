@@ -268,7 +268,7 @@ nav li a:hover {
     padding: -120px 12px;
     position: absolute;
     bottom: 8px;
-    width: 100%;
+    width: 95%;
     text-align: center;
   }
   .dot {
@@ -327,6 +327,7 @@ nav li a:hover {
 .featured .container-latest .item .column .inner .featured-title {
   font-size: 20px;
   margin-left: 52px;
+  width: 80%;
 }
 .featured .container-latest .item .column .inner .date {
   max-width: 650px;
@@ -357,14 +358,14 @@ nav li a:hover {
   }
   .featured .container-latest .item .column .inner .article-container .featured-image .imgf {
     width: 600px;
-    height: 300px;
+    height: 350px;
     margin-left: 115px;
   }
   .featured .container-latest .item .column .inner .article-container .featured-title {
     max-width: 650px;
     font-size: 34px;
     margin-left: 800px;
-    margin-top: -310px;
+    margin-top: -360px;
   }
   .featured .container-latest .item .column .inner .article-container .date {
     max-width: 650px;

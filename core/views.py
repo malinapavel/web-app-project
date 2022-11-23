@@ -19,7 +19,7 @@ def index(request):
         with open(news.description.path,'r') as file:
             tmp = file.readline()
 
-        article_txt_brief = str(tmp[:400] + " . . . . . .")
+        article_txt_brief = str(tmp[:400] + "...")
         news.description_brief = article_txt_brief
         news.save(update_fields=['description_brief'])
 
@@ -62,7 +62,7 @@ def index2(request):
         with open(news.description.path,'r') as file:
             tmp = file.readline()
 
-        article_txt_brief = str(tmp[:400] + " . . . . . .")
+        article_txt_brief = str(tmp[:400] + "...")
         news.description_brief = article_txt_brief
         news.save(update_fields=['description_brief'])
         
@@ -280,9 +280,8 @@ def news_article(request, id):
     with open(article.description.path,'r') as file:
         tmp = file.readlines()
         for t in tmp:
-            if t[-1] == '\n':
-                article_txt.append(t)
-                article_txt.append("\n")
+            article_txt.append(t)
+            article_txt.append("\n")
                 
 
     if request.method == 'POST':

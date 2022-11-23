@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap");
 html, body {
   max-width: 100%;
-  max-height: 5000px;
+  max-height: 9000px;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }

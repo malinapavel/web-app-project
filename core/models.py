@@ -23,7 +23,7 @@ class News(models.Model):
     img = models.ImageField(upload_to='news')
     title = models.CharField(max_length = 150)
     written_on = models.DateTimeField(default=datetime.now)
-    description_brief = models.CharField(max_length = 150)
+    description_brief = models.CharField(max_length = 400)
     description = models.FileField(default='text_articles/dummy.txt')
     access_count = models.IntegerField()
     id = models.IntegerField(primary_key=True)

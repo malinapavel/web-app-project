@@ -21,21 +21,24 @@
 
     <div class="navbar" >
         <div class="container">
+            <!-- The logo image can redirect you to the home page! -->
             <div class="logo">
                 <a class="logo-img" href="/" title="Go back home">
                     <img src="{% static 'images/logo.png' %}" alt="WeirdoWorld logo" style="max-width:250px; max-height:220px; padding-top: 20px">
                 </a>
             </div>
-
             <p class="header-txt">[ Website management ]</p>
-            
         </div>
     </div>
 
 
     <br><br><br>
+
+    <!-- Open the sidebar menu by hovering over the symbol-->
     <span class="menu-arrow" style="cursor:pointer" onmouseover="openNav()">>></span>
 
+
+    <!-- Just some text -->
     <div class="main">
         <h2 class="main-title">Welcome to the admin page!</h2>
         <p class="main-txt">Here you can manage the overall functionalities of this website: </p>
@@ -47,7 +50,7 @@
     </div>
 
     
-
+    <!-- SIDEBAR MENU -->
     <div class="sidenav" id="mySidenav" onmouseleave="closeNav()">
         <div class="list">
             <a href='footage_admin'>Footage data</a>

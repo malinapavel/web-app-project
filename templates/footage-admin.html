@@ -21,23 +21,27 @@
 
     <div class="navbar" >
         <div class="container">
+            <!-- The logo image can redirect you to the home page! -->
             <div class="logo">
                 <a class="logo-img" href="/" title="Go back home">
                     <img src="{% static 'images/logo.png' %}" alt="WeirdoWorld logo" style="max-width:250px; max-height:220px; padding-top: 20px">
                 </a>
             </div>
-
             <p class="header-txt">[ Website management ]</p>
-            
         </div>
     </div>
 
 
     <br><br><br>
+
+    <!-- Open the sidebar menu by hovering over the symbol-->
     <span class="menu-arrow" style="cursor:pointer" onmouseover="openNav()">>></span>
 
+
+    <!-- TABLES -->
     <div class="tables">
-        <em class="pending-txt">Pending requests ({{nr_pending}}) </em>
+        <!-- Table for pending requests -->
+        <em class="pending-txt">Pending requests ({{ nr_pending }}) </em>
         <form method="POST" action="{% url 'footage_admin' %}">
             <table id="pending-table">
                 <tr>
@@ -47,21 +51,29 @@
                 <th style="width:30%">Date</th>
                 <th>Select</th>
                 </tr>
+
                 {% for f in pending_footage %}
                     <tr>
                     <td><img src ="{{ f.img.url }}" style="height: 40%; width: 40%"></td>
-                    <td>{{f.description}}</td>
-                    <td>{{f.user}}</td>
-                    <td style="width:30%">{{f.sent_on}}</td>
-                    <td><input type="checkbox" value="{{f.img}}" name="select" />&nbsp;</td></td>
+                    <td>{{ f.description }}</td>
+                    <td>{{ f.user }}</td>
+                    <td style="width:30%">{{ f.sent_on }}</td>
+                    <!-- Select footages and extract their image file name, so that you manage them in views.py -->
+                    <td><input type="checkbox" value="{{ f.img }}" name="select" />&nbsp;</td>
                     </tr>
                 {% endfor %}
             </table>
+
             <br>
+
             {% csrf_token %}
+            <!-- Button for solving requests -->
             <button class="select-footage" style="cursor: pointer"><i class="fa-solid fa-check" id="solve"><span class="txt">SOLVE THE SELECTED REQUESTS</span></i></button>
         </form>
+
         <br><br><br><br><br><br>
+
+        <!-- Table for all footages ever sent -->
         <em class="all-txt">All footage </em>
         <table id="all-table">
             <tr>
@@ -71,18 +83,20 @@
               <th>Date</th>
               
             </tr>
+
             {% for f in footage %}
                 <tr>
                 <td><img src ="{{ f.img.url }}" style="height: 40%; width: 40%"></td>
-                <td>{{f.description}}</td>
-                <td>{{f.user}}</td>
-                <td style="width:30%">{{f.sent_on}}</td>
+                <td>{{ f.description }}</td>
+                <td>{{ f.user }}</td>
+                <td style="width:30%">{{ f.sent_on }}</td>
                 </tr>
             {% endfor %}
         </table>
     </div>
 
-
+    
+    <!-- SIDEBAR MENU -->
     <div class="sidenav" id="mySidenav" onmouseleave="closeNav()">
         <div class="list">
             <a href='footage_admin'>Footage data</a>

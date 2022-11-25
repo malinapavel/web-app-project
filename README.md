@@ -11,7 +11,7 @@
   in this case).
 
   The aforementioned functionalities for users include adding a comment to an article or sending video footage/images/text that would make for a potential article. The admin, 
-  on the other hand, can add new articles, remove comments or articles and process what materials the users have sent, all of that in a special admin panel.
+  on the other hand, can add new articles, remove comments and process what materials the users have sent, all of that in a special admin panel.
   
   
 ## Specifications:

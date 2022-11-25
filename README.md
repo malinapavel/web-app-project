@@ -28,3 +28,4 @@
     
     => all branches (except the master, of course) will be merged into master branch
     
+    !!! the folders that mattered for this project were 'static' (for static files), 'text_articles' (.txt documents for the articles), 'media' (where all the uploaded pictures go), 'templates' (html pages), 'core' (where 'views.py', 'models.py', 'admin.py' and 'urls.py' can be found) and 'wadprj' (in case an additional setting needs to be inserted into 'settings.py')

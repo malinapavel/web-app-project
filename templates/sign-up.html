@@ -1,0 +1,280 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/sign-up.css' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap' %}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/logo-icon-neg.ico' %}" sizes="32x32"/>
+    <title>WeirdoWorld</title>
+</head>
+<body>
+
+
+
+
+    <!--MENU BAR-->
+
+    <div class="navbar" >
+        <div class="container">
+            <div class="logo">
+                <a class="logo-img" href="index.html">
+                    <img src="{% static 'images/logo.png' %}" alt="WeirdoWorld logo" style="max-width:250px; max-height:220px; padding-top: 20px; padding-left: 100px">
+                </a>
+            </div>
+
+            <img id="mob" class="mobile-menu" src="{% static 'images/menu-icon.png' %}" alt="Extend menu" style="width:30px; height:30px; padding: 1% 2%">
+
+            <nav style="float: right">
+                <img id="mob-exit" class="mobile-menu-exit" class="close" src="{% static 'images/x-symbol.png' %}" alt="Close mobile menu" style="width:20px; height:20px; padding: 1% 2%">
+                
+                <ul class="primary-nav" style="list-style: none">
+                    <li><a href='index'><span>[ Home ]</span></a></li>
+                    <li><a href='all_news'><span>[ All news ]</span></a></li>
+                    <li><a href='about_us'><span>[ About Us ]</span></a></li>
+                    <li><a href='contact'><span>[ Contact ]</span></a></li>
+                </ul>
+
+                <ul class="secondary-nav" style="list-style: none">
+                    {% if request.user.is_authenticated %}
+                        <li style="margin-left: -290px; margin-top: -2px"><a href='log_out'><span>[ Log-out ]</span></a></li>
+                        <li style="margin-left: -300px; margin-top: -2px" title="Go to admin page">
+                            {% if user.is_superuser %}
+                                <a href="/">
+                                    <span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span>
+                                </a>
+                            {% else %}
+                                <a href="#" onclick="privilege()">
+                                    <span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span>
+                                </a>
+                            {% endif %}
+                        </li> 
+                    {% else %}
+                        <li id="modalbtn" style="margin-left: -400px; margin-top: -2px"><a href="#"><span>[ Log-in ]</span></a></li>
+                    {% endif %}
+                </ul>
+            </nav>   
+        </div>   
+    </div>
+
+
+
+    <!--REGISTRATION FORM-->
+
+    <div class="registration">
+        <i>Registration form</i>
+        
+        <br><br>
+        <!-- Messages in case the account was created successfully or not -->
+        <div>
+            <style>
+                h5{
+                    color: rgb(211, 85, 1);
+                }
+            </style>
+
+            {% for message in messages %}
+                {% if "register" in message.tags %}
+                    <h5>{{message}}</h5>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <form action="{% url 'sign_up' %}" method="POST">
+        {% csrf_token %}
+            <div class="row">
+                <div class="col-25"></div> 
+                <div class="col-75">
+                    <input type="text" id="fname" name="firstname" placeholder="First name">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25"></div>
+                <div class="col-75">
+                    <input type="text" id="lname" name="lastname" placeholder="Last name">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25"></div>
+                <div class="col-75">
+                    <input type="text" id="usernamee" name="usernamee" placeholder="Username">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25"></div>
+                <div class="col-75">
+                    <input type="password" id="pw" name="password" placeholder="Password">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25"></div>
+                <div class="col-75">
+                    <input type="password" id="cpw" name="confirm_password" placeholder="Confirm Password">
+                </div>
+            </div>
+    
+            <div class="row">
+                <input type="submit" value="Sign up">
+            </div>
+
+            <br><br>
+
+        </form>
+    </div>
+
+
+
+    <!--SCROLL UP-->
+
+    <button onclick="topFunction()" id="scrollbtn" title="Go to top"><img class="scroll" src="{% static 'images/up.png' %}"></button>
+
+
+    
+
+     <!--FOOTER-->
+
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+     
+     <div class="footer">
+        <a href='about_us#terms-and-cond' style="text-decoration: none; color: black"><p>[ Terms and conditions ]</p></a>
+        <a href='about_us#whorwe' style="text-decoration: none; color: black"><p>[ About us ]</p></a>
+        <a href='about_us#deontology' style="text-decoration: none; color: black"><p>[ Code of Deontology ]</p></a>
+        <a href='about_us#writers' style="text-decoration: none; color: black"><p>[ All writers ]</p></a>
+        <a href='contact' style="text-decoration: none; color: black"><p>[ Contact ]</p></a>
+        <a href='contact#upload-section' style="text-decoration: none; color: black"><p>[ Send footage ]</p></a>
+        
+        <div class="socials-1">
+            <a href="https://www.facebook.com/"><img class="socials-1-img" src="{% static 'images/icons8-facebook-96.png' %}"></a>
+            <a href="https://www.instagram.com/"><img class="socials-1-img" src="{% static 'images/icons8-instagram-96.png' %}"></a>
+            <a href="https://www.tiktok.com/en/"><img class="socials-1-img" src="{% static 'images/icons8-tiktok-96.png' %}"></a>
+            <a href="https://www.youtube.com/"><img class="socials-1-img" src="{% static 'images/icons8-youtube-96.png' %}"></a>
+            <a href="https://twitter.com/?lang=en"><img class="socials-1-img" src="{% static 'images/icons8-twitter-96.png' %}"></a>
+        </div>
+
+        <div class="socials-2">
+            <a href="https://www.tumblr.com"><img class="socials-2-img" src="{% static 'images/icons8-tumblr-96.png' %}"></a>
+            <a href="https://www.reddit.com/"><img class="socials-2-img" src="{% static 'images/icons8-reddit-96.png' %}"></a>
+            <a href="https://www.linkedin.com/"><img class="socials-2-img" src="{% static 'images/icons8-linkedin-96.png' %}"></a>
+            <a href="https://www.messenger.com/"><img class="socials-2-img" src="{% static 'images/icons8-facebook-messenger-96.png' %}"></a>
+            <a href="https://web.whatsapp.com/"><img class="socials-2-img" src="{% static 'images/icons8-whatsapp-96.png' %}"></a>
+        </div>
+        
+        <div class="subscribe" id="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
+
+        <form action="{% url 'sign_up' %}#subscribe" method="POST" class="form1" name="form1"><!--onsubmit="return required()-->
+        {% csrf_token %}
+            
+            <div class="row">
+                <div class="col-mail">
+                    <input type="email" id="email-sub" name="email-sub" placeholder="Your e-mail">
+                </div>
+            </div>
+
+            <div class="row-sub">
+                <input type="submit" value="Subscribe">
+            </div>
+    
+            <div>
+                <style>
+                    h4{
+                        margin-left: 460px;
+                        width: 30%;
+                    }
+                    @media only screen and (min-width: 768px){
+                        h4{
+                            margin-left: 540px;
+                        }
+                    }
+                </style>
+                {% for message in messages %}
+                    {% if "email" in message.tags %}
+                        <h4>{{message}}</h4>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </form>
+     </div>
+
+
+
+
+     <!-- LOGIN MODALl -->
+
+    <div id="login-modal" class="modal">
+
+        <div class="modal-content">
+            <div class="modal-header">      
+                <span class="close">&times;</span>
+            </div>
+        
+            <div class="modal-body">
+                <div style="text-align: center; font-size: 30px; margin-top:40px;">[ Log-in ]</div>
+
+                <div class="container-modal">
+                    <form action="{% url 'sign_up' %}" method="POST">
+                    {% csrf_token %}
+                            <div class="row">
+                                <div class="col-25">
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" id="uname" name="username" placeholder="Username">
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="lname"></label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="password" id="pw" name="password" placeholder="Password">
+                                </div>
+                            </div>
+                        
+                            <div class="row">
+                                <input type="submit" value="Sign-in">
+                            </div>
+
+                            <br><br>
+    
+                            <div>
+                                {% for message in messages %}
+                                    {% if "login" in message.tags %}
+                                        <script>alert("Sorry, but your credentials are not valid. 😭")</script>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                        <div style="text-align: center; margin-top:50px"><span>Don't have an account yet?</span><a href='sign_up' style="text-decoration: none"><span class="sign-up-btn"> Sign up now.</span></a></div>                    
+                    </form>
+            </div>
+        
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+
+    
+
+    
+    <!--script-->
+    <script src="{% static 'js/menu.js' %}"></script>
+    <script src="{% static 'js/login-modal.js' %}"></script>
+    <script src="{% static 'js/scroll-up.js' %}"></script>
+    <script>
+        function privilege(){
+            alert("Sorry, but you do not have the privileges to access the admin's page.");
+        }
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap");
+html, body {
+  max-width: 100%;
+  max-height: 5500px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: white;
+  margin: 0;
+  font-family: "Karla", sans-serif;
+}
+
+/*MENU BAR*/
+/*LOW RESOLUTION (MOBILE)*/
+
+.navbar {
+    background: rgb(237, 237, 237);
+    height: 80px;
+    padding: 0.5em;
+  }
+
+.navbar .container .logo{
+    padding-left: 100px;
+}
+
+.navbar .container .header-txt{
+    margin-left: 400px;
+    margin-top: -40px;
+    font-size: 20px;
+}
+.menu-arrow{
+    padding-top: 50px;
+    margin-left: 50px;
+    font-size: 30px;
+    color: rgb(190, 190, 190);
+}
+.sidenav {
+    height: 70%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(19, 19, 19);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 200px;
+    margin-top: 95px;
+    border-radius: 3px;
+  }
+  
+  .sidenav a {
+    padding: 15px 1px 15px 40px;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(237, 237, 237);
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav .list a:hover {
+    background: black;
+  }
+  .tables{
+    margin-top:50px;
+  }
+  .tables .pending-txt{
+    margin-left: 120px;
+    font-size: 25px;
+    color: red
+  }
+  #pending-table {
+    margin-top: 30px;
+    margin-left: 120px;
+    font-family: Karla, sans-serif;
+    border-collapse: collapse;
+    width: 68%;
+  }
+  
+  #pending-table td, #pending-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  
+  #pending-table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #pending-table tr:hover {background-color: rgb(237, 237, 237);}
+  
+  #pending-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(92, 92, 92);
+    color: white;
+  }
+
+  .tables .all-txt{
+    margin-left: 120px;
+    font-size: 25px;
+    color: rgb(0, 0, 0)
+  }
+  #all-table {
+    margin-top: 30px;
+    margin-left: 120px;
+    font-family: Karla, sans-serif;
+    border-collapse: collapse;
+    width: 68%;
+  }
+  
+  #all-table td, #all-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #all-table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #all-table tr:hover {background-color: rgb(237, 237, 237);}
+  
+  #all-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(92, 92, 92);
+    color: white;
+  }
+
+  .select-comms{
+    margin-top: 100px;
+    margin-left: 120px;
+    background-color: rgb(237, 237, 237);
+    border-radius: 10px;
+    font-size: 15px;
+    height: 35px;
+    font-family: Karla, sans-serif;
+  }
+  .select-comms #minus{
+    margin-left: 3px;
+  }
+  .select-comms .txt{
+    padding: 10px 10px 10px 10px;
+  }
+
+/*DESKTOP RESOLUTION*/
+@media only screen and (min-width: 768px){
+    .navbar {
+        background: rgb(237, 237, 237);
+        height: 80px;
+        padding: 0.5em;
+      }
+    
+    .navbar .container .logo{
+        padding-left: 100px;
+    }
+    
+    .navbar .container .header-txt{
+        margin-left: 1070px;
+        margin-top: -50px;
+        font-size: 29px;
+    }
+    .menu-arrow{
+        margin-left: 20px;
+        font-size: 40px;
+        color: rgb(190, 190, 190);
+    }
+    #pending-table {
+      margin-top: 30px;
+      margin-left: 120px;
+      font-family: Karla, sans-serif;
+      border-collapse: collapse;
+      width: 85%;
+    }
+
+    #all-table {
+      margin-top: 30px;
+      margin-left: 120px;
+      font-family: Karla, sans-serif;
+      border-collapse: collapse;
+      width: 85%;
+    }
+    .select-comms{
+      margin-top: 100px;
+      margin-left: 120px;
+      background-color: rgb(237, 237, 237);
+      border-radius: 10px;
+      font-size: 15px;
+      height: 35px;
+      font-family: Karla, sans-serif;
+    }
+    .select-comms #minus{
+      margin-left: 3px;
+    }
+    .select-comms .txt{
+      padding: 10px 10px 10px 10px;
+    }
+
+}

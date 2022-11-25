@@ -1,0 +1,153 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/news-admin.css' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap' %}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/logo-icon-neg.ico' %}" sizes="32x32"/>
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css"> 
+    <title>WeirdoWorld</title>
+</head>
+
+
+
+<body>
+
+    <div class="navbar" >
+        <div class="container">
+            <!-- The logo image can redirect you to the home page! -->
+            <div class="logo">
+                <a class="logo-img" href="/" title="Go back home">
+                    <img src="{% static 'images/logo.png' %}" alt="WeirdoWorld logo" style="max-width:250px; max-height:220px; padding-top: 20px">
+                </a>
+            </div>
+            <p class="header-txt">[ Website management ]</p>
+        </div>
+    </div>
+
+
+    <br><br><br>
+
+    <!-- Open the sidebar menu by hovering over the symbol-->
+    <span class="menu-arrow" style="cursor:pointer" onmouseover="openNav()">>></span>
+
+    <!-- TABLES -->
+    <div class="tables">
+        <em class="all-txt">All news </em>
+        <table id="all-table">
+            <tr>
+                <th>ID news</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Image</th>
+                <th>Brief description</th>
+                <th>No. of visitors</th>
+            </tr>
+
+            {% for n in news %}
+                <tr>
+                <td>{{ n.id }}</td>
+                <td>{{ n.title }}</td>
+                <td><img style="height: 40%; width: 40%" src="{{ n.img.url }}"></img></td>
+                <td>{{ n.description_brief }}</td>
+                <td style="width:30%">{{ n.written_on }}</td>
+                <td>{{ n.access_count }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- Button for adding articles (it will open a modal)-->
+    <button class="add-article" id="modalbtn" style="cursor: pointer"><span class="txt" id="add"><i class="fa-solid fa-plus"> Add a new article </i></span></button>
+
+    <br><br><br><br><br><br>
+    
+    <!-- SIDEBAR MENU -->
+    <div class="sidenav" id="mySidenav" onmouseleave="closeNav()">
+        <div class="list">
+            <a href='footage_admin'>Footage data</a>
+            <br><br>
+            <a href='comm_admin'>Comments</a>
+            <br><br>
+            <a href='news_admin'>News articles</a>
+        </div>
+    </div>
+
+
+    <!-- POST ARTICLE FORM MODAL-->
+    <div id="article-modal" class="modal">
+
+        <div class="modal-content">
+            <div class="modal-header">      
+                <span class="close">&times;</span>
+            </div>
+        
+            <div class="modal-body">
+                <div class="container-modal">
+                    <form action="{% url 'news_admin' %}" enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                        <!-- ID of article -->
+                        <div class="row">
+                            <div class="col-25">
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="ID" name="ID" placeholder="ID">
+                            </div>
+                        </div>
+
+                        <!-- Title of article -->
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="lname"></label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="title" name="title" placeholder="News title">
+                            </div>
+                        </div>
+
+                        <!-- Image for article -->
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="lname">Image</label>
+                            </div>
+                            <div class="col-75">
+                                <input class="browse" type="file" accept="image/*" id="myfile" name="myimg">
+                            </div>
+                        </div>
+
+                        <!-- Description path for article -->
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="lname">Description path</label>
+                            </div>
+                            <div class="col-75">
+                                <input class="browse" type="file" accept=".txt" id="myfile" name="myfile">
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+                            <input type="submit" value="Submit article">
+                        </div>
+
+                        <br><br>
+                    </form>
+            </div>
+        
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+
+    
+
+    <!-- script -->
+    <script src="{% static 'js/navigation-admin.js' %}"></script>
+    <script src="{% static 'js/article-modal.js' %}"></script>
+
+</body>
+</html>

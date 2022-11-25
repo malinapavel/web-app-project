@@ -1,0 +1,414 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap' %}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/logo-icon-neg.ico' %}" sizes="32x32"/>
+    <title>WeirdoWorld</title>
+</head>
+<body>
+
+
+
+    <!--MENU BAR-->
+
+    <div class="navbar" >
+        <div class="container">
+            <div class="logo">
+                <a class="logo-img" href="index.html">
+                    <img src="{% static 'images/logo.png' %}" alt="WeirdoWorld logo" style="max-width:250px; max-height:220px; padding-top: 20px; padding-left: 100px">
+                </a>
+            </div>
+
+            <img id="mob" class="mobile-menu" src="{% static 'images/menu-icon.png' %}" alt="Extend menu" style="width:30px; height:30px; padding: 1% 2%">
+
+            <nav style="float: right">
+                <img id="mob-exit" class="mobile-menu-exit" class="close" src="{% static 'images/x-symbol.png' %}" alt="Close mobile menu" style="width:20px; height:20px; padding: 1% 2%">
+                
+                <ul class="primary-nav" style="list-style: none">
+                    <li><a href='index'><span>[ Home ]</span></a></li>
+                    <li><a href='all_news'><span>[ All news ]</span></a></li>
+                    <li><a href='about_us'><span>[ About Us ]</span></a></li>
+                    <li><a href='contact'><span>[ Contact ]</span></a></li>
+                </ul>
+
+                <ul class="secondary-nav" style="list-style: none">
+                    {% if request.user.is_authenticated %}
+                        <li style="margin-left: -290px; margin-top: -2px"><a href='log_out'><span>[ Log-out ]</span></a></li>
+                        <li style="margin-left: -300px; margin-top: -2px" title="Go to admin page">
+                            {% if user.is_superuser %}
+                                <a href='admin_page'>
+                                    <span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span>
+                                </a>
+                            {% else %}
+                                <a href="#" onclick="privilege()">
+                                    <span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span>
+                                </a>
+                            {% endif %}
+                        </li> 
+                    {% else %}
+                        <li id="modalbtn" style="margin-left: -400px; margin-top: -2px"><a href="#"><span>[ Log-in ]</span></a></li>
+                    {% endif %}
+                </ul>
+            </nav>   
+        </div>   
+    </div>
+
+
+
+
+
+    <!--ABOUT SECTION-->
+
+    
+    <div class="about-section" id="whorwe">
+        <div class="featured">
+
+            <br><br><br><br><br><br>
+            
+            <div class= "container-about">
+    
+                <div class="separator"></div>
+                <h1><span class="about-text">WHO ARE WE?</span></h1>
+                <div class="separator"></div>
+                <br><br>
+                <p> WeirdoWorld is a team of journalists who want to deliver intriguing news, be it tragic or funny. We consider that the news we provide to you are escaping from the austerity nature of journalism, whilst still keeping objectivity to the fullest.</p>
+                <p> Mind you, we are not trying to mock any individual participating in strange incidents, but rather we ilustrate the weirdly funny course of events.</p>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="writers-section" id="writers">
+        <div class="featured">
+
+            <br><br><br><br><br><br>
+
+            <div class= "container-writers">
+    
+                <div class="separator"></div>
+                <h1><span class="writers-text">ALL WRITERS</span></h1>
+                <div class="separator"></div>
+                <br><br>
+
+
+                <figure class="snip1390">
+                    <img src="{% static 'images/sbeve.jpg' %}" alt="profile-sample3" class="profile" />
+                    <figcaption>
+                      <h2>Steve Etheridge</h2>
+                      <h4>Editor in Chief</h4>
+                      <blockquote>WeirdoWorld has one and only one core belief: All web content deserves to go viral, whether the internet users comprehend what they read or not.</blockquote>
+                    </figcaption>
+                  </figure>
+
+                  <figure class="snip1390 hover">
+                    <img src="{% static 'images/bijuterie.jpg' %}" alt="profile-sample5" class="profile" />
+                    <figcaption>
+                      <h2>Jewel Galbraith</h2>
+                      <h4>Head Writer</h4>
+                      <blockquote>WeirdoWorld is the latest and greatest online social experience filled with the most clickable content anywhere on the internet. </blockquote>
+                    </figcaption>
+                  </figure>
+
+                  <figure class="snip1390">
+                    <img src="{% static 'images/jessye.jpg' %}" alt="profile-sample6" class="profile" />
+                    <figcaption>
+                      <h2>Jessye McGarry</h2>
+                      <h4>Senior Writer</h4>
+                      <blockquote>WeirdoWorld prefers to think of you and every other person on earth as nothing more than an empty vessel existing purely to share content with other empty vessels. </blockquote>
+                    </figcaption>
+                  </figure>
+
+                  <figure class="snip1390">
+                    <img src="{% static 'images/sprots.jpeg' %}" alt="profile-sample7" class="profile" />
+                    <figcaption>
+                      <h2>Jasy Catlin</h2>
+                      <h4>Staff Writer</h4>
+                      <blockquote>Don't worry; visits to WeirdoWorld frequently cause personal computers to disintegrate. Your machine should reappear on the outskirts of Sussex in a few days...</blockquote>
+                    </figcaption>
+                  </figure>
+
+                  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                  
+            </div>
+        </div>
+    </div>
+
+
+    <div class="cond-section" id="terms-and-cond">
+
+        <div class="featured">
+            <br><br><br><br><br><br>
+            <div class= "container-cond">
+    
+                <div class="separator1"></div>
+                <h1><span class="cond-text">TERMS AND CONDITIONS</span></h1>
+                <div class="separator"></div>
+                
+                <br><br>
+
+                <p style="margin-bottom:100px">Welcome to our digital information network. These are our terms and conditions for use of the network, which you may access in several ways, including but not limited to the World Wide Web via WeirdoWorld.com, digital television, PDA, mobile phone and RSS feeds. In these terms and conditions, when we say the “WeirdoWorld Site” we mean the digital information network operated by or on behalf of WeirdoWorld News & Media Limited or its parent companies, subsidiaries and affiliates (collectively “WeirdoWorld”), regardless of how you access the network, as well as any WeirdoWorld apps whether you access those via a WeirdoWorld Site or a third-party site. However, if you access the WeirdoWorld Site, you agree to be bound by these terms and conditions.</p>
+                
+                <i>1. Registration</i>
+                <p>You may access areas of the WeirdoWorld Site that require registration by becoming a registered member and creating an account with us. You agree to be responsible for maintaining the confidentiality of your passwords or other account identifiers which you choose and all activities that occur under your account.</p>
+                
+                <br>
+
+                <p style="padding-bottom:15px">By registering on the WeirdoWorld Site, you agree that:</p>
+                    <ol type="I">
+                        <li style="padding-bottom:15px"> your account and password are personal to you and may not be used by anyone else to access the WeirdoWorld Site;</li>
+                        <li style="padding-bottom:15px"> you will not do anything which would assist anyone who is not a registered user to gain access to any registration area of the WeirdoWorld Site; and</li>
+                        <li style="padding-bottom:15px"> you will not create registration accounts for the purpose of abusing the functionality of the site, or other users; nor will you seek to pass yourself off as another user.</li>
+                    </ol>
+                <p>You agree to notify us immediately if you become aware of any unauthorized use of your password or account identifiers by others.</p>
+                
+                <br><br><br><br>
+
+                <i>2. Use of material appearing on the WeirdoWorld Site</i>
+                <p>Your use of the WeirdoWorld Site is for your own personal and non-commercial use only. You acknowledge that, as between WeirdoWorld and you, except for user content and advertisements (as discussed below), WeirdoWorld is the sole owner of all content on the WeirdoWorld Site, including, without limitation, all applicable copyrights, patents, trademarks, trade secrets, trade names, logos, and other intellectual property rights thereto, as well as text, images, graphics, logos, audio, video and other material appearing on the WeirdoWorld Site (“WeirdoWorld Content”). The WeirdoWorld Site and the WeirdoWorld Content are protected by the copyright laws and other intellectual property laws of the United Kingdom, the United States and Australia and are protected globally by applicable international copyright treaties.
+                You may download and print extracts from the WeirdoWorld Content for your own personal and non-commercial use only, provided you maintain and abide by any author attribution, copyright or trademark notice or restriction in any material that you download or print. You may not use any WeirdoWorld Content for any other purpose without our prior written approval. Except as expressly authorised by WeirdoWorld, you are not allowed to create a database in electronic or paper form comprising all or part of the material appearing on the WeirdoWorld Site.
+                </p>
+                
+                <br><br><br><br>
+
+                <i>3. Disclaimer of liability</i>
+                <p>To the extent permitted by law, we do not accept any responsibility for any statement in the WeirdoWorld Content. Nothing in WeirdoWorld Content is provided for any specific purpose or at the request of any particular person. For the avoidance of confusion, we will not be liable for any loss caused as a result of your doing, or not doing, anything as a result of viewing, reading or listening to the WeirdoWorld Content or any part of it. You can access other sites via links from the WeirdoWorld Site. These sites are not under our control, and we are not responsible in any way for any of their contents.
+                    We give no warranties of any kind concerning the WeirdoWorld Site or the WeirdoWorld Content. In particular, we do not warrant that the WeirdoWorld Site or any of its contents is virus free. You must take your own precautions in this respect as we accept no responsibility for any infection by virus or other contamination or by anything which has destructive properties.
+                    Although we will do our best to provide constant, uninterrupted access to the WeirdoWorld Site, we do not guarantee this. We accept no responsibility or liability for any interruption or delay.
+                </p>
+                
+                <br><br><br><br>
+
+                <i>4. User content</i>
+                <p style="padding-bottom:15px">Users of our site may be permitted to submit content for publication in various areas of the WeirdoWorld Site. You will be deemed to consent to guidelines, and these terms and conditions, if you choose to post any content or comments to the WeirdoWorld Site.
+                    When you submit content to us, you agree and represent that you have created that content, or you have received permission from, or are authorized by, the owner of any part of the content to submit it to the WeirdoWorld Site.
+                    You or the owner of the content still own the copyright in the content sent to us, but by submitting content to us, you are granting us an unconditional, irrevocable, non-exclusive, royalty-free, fully transferable, perpetual worldwide licence to use, publish and/or transmit, and to authorise third-parties to use, publish and/or transmit your content in any format and on any platform, either now known or hereafter invented.
+                    You acknowledge and agree that when you post content on the WeirdoWorld Site or view content provided by others, you are doing so at your own discretion and risk, including any reliance on the accuracy, completeness, of that content. You further acknowledge and agree that the views expressed by you and other users in that content do not necessarily reflect the views of WeirdoWorld, and we do not support or endorse any user content. You acknowledge that we have no obligation to pre-screen, monitor, review, or edit any content posted by you and other users on the WeirdoWorld Site.
+                    We, or authorised third parties, reserve the right to cut, crop, edit or refuse to publish your content at our or their sole discretion. We may remove your content from use at any time.
+                    We accept no liability in respect of any content submitted by users and published by us or by authorised third parties.
+                    You warrant that the content you submit to us is not obscene, threatening, harassing, libelous, deceptive, fraudulent, invasive of another’s privacy, offensive, defamatory of any person or illegal. You warrant that the content you submit to us does not infringe any patent, trademark, trade secret, copyright, or other intellectual or proprietary or privacy right of any party or individual.
+                </p>
+
+                <p>You agree not to:</p>
+                    <ol type="I">
+                        <li style="padding-bottom:15px"> post content which is deliberately intended to upset or harm other users; </li>
+                        <li style="padding-bottom:15px"> use the WeirdoWorld Site to post or otherwise transmit content that victimizes, harasses, degrades, or intimidates an individual or group of individuals on the basis of any impermissible classification, including, without limitation, religion, gender, sexual orientation, race, color, creed, ethnicity, national origin, citizenship, age, marital status, military status or disability; </li>
+                        <li style="padding-bottom:15px"> post or otherwise transmit any content that contains software viruses or any other computer code, files, or programs designed to interrupt, destroy, or limit the functionality of the WeirdoWorld Site or any computer software or hardware or telecommunications equipment;</li>
+                        <li style="padding-bottom:15px"> upload or otherwise transmit any content, or take any other actions with respect to your use of the WeirdoWorld Site, that would constitute, or would otherwise encourage, criminal conduct or give rise to civil liability; or</li>
+                        <li style="padding-bottom:15px"> use the WeirdoWorld Site for commercial purposes, including, without limitation, submitting any material to solicit funds or to promote, advertise or solicit the sale of any goods or services.</li>
+                    </ol>
+                
+                <br>
+
+                <p>You understand that the technical processing and transmission of the WeirdoWorld Site may involve:</p>
+                <ol type="I">
+                    <li style="padding-bottom:15px"> transmissions over various networks; and  </li>
+                    <li style="padding-bottom:15px"> changes to content to conform and adapt to technical requirements of connecting networks or devices. WeirdoWorld assumes no responsibility for the deletion or failure to store postings of content or other information submitted by you or other users to the WeirdoWorld Site. </li>
+                </ol>
+                
+                <br><br><br><br>
+                
+                <i>5. Changes to these Terms and Conditions</i>
+                <p>Please note that we may change these terms and conditions from time to time at our sole discretion and we reserve the right to do so without your consent. Any revised terms and conditions will be applicable at the time of posting on the WeirdoWorld Site. Please ensure that you review these terms and conditions regularly as you will be deemed to have accepted a variation if you continue to use the WeirdoWorld Site after it has been posted.</p>
+            
+            </div>
+        </div>
+    </div>
+
+
+    <div class="deontology-section" id="deontology">
+
+        <div class="featured">
+            
+            <br><br><br><br><br><br>
+
+            <div class= "container-deontology">
+    
+                <div class="separator"></div>
+                <h1><span class="deontology-text">CODE OF DEONTOLOGY</span></h1>
+                <div class="separator"></div>
+
+                <br><br>
+
+                <i>Prior Considerations</i>
+                <p> This ethical code is situated in the context created by the existing regulatory framework, namely the audiovisual law, the audiovisual code, the civil code, the European Convention on Human Rights, the ECHR jurisprudence.</p>
+                <p>These regulations are assumed as rules of editorial conduct, both by virtue of their character of legal obligation, and with the conviction that the public interest mission of broadcasters must be built in the matter offered by audiovisual communication carried out in compliance with the law.
+                </p>
+
+                <br><br>
+                
+                <i>Level of self-regulation</i>
+                <p> This code does not duplicate the existing regulations, but assumes them as external reference elements for the addition of additional rules or principles, which in fact constitute its subject matter. For this reason and to avoid the inconsistency of reproducing in the field of self-regulation provisions that are directly mandatory by law or secondary legislation and cannot be assumed as optional, even the most important of the legal regulations will not be found in its content.
+                </p>
+
+                <br><br>
+                
+                <i>Principles</i>
+                <p> This code values the conviction that the obligation to comply with the law and regulations can coexist without contradicting the need that broadcasters, producers, publishers and editors have to use the values that emerge from experience, common sense, editorial and ethical benchmarks, when faced with editorial challenges or when carrying out the routine of ordinary editorial activities. "In a perfect world only one rule would work: use your own and best judgment!" (BBC Editorial Guidelines)</p>
+                <p> The trust of the public is another value that we keep as a benchmark and it can only be won through impartiality and honesty and by guaranteeing that the public is avoided at all times to be misled or manipulated.</p>                
+                <p>The accuracy of the presentation of the truth cannot be achieved only by simply presenting the facts, but only by an effort to detect the relevant aspects, to distinguish the evidence from prejudice or confusion to benefit from the uncertainty function, and to discover the truth where it lies (BBC-EG)</p>                    
+                <p>Editorial integrity and independence must be preserved in the face of any external interests, any political or commercial pressures and any personal interests. (BBC-EG)</p>
+                <p>The editorial content must provide useful meaning for the audience, not just stimulate reactions or make them the target of the advertising message. Entertainment also offers this type of meaning in the form of value constructed with humor, good sense, and good inspiration.</p>
+                <br><br>
+
+                <i>Value judgements/opinions</i>
+                <p>Although opinions are necessarily subjective and, consequently, cannot and should not be subject to criteria of correctness (as expressed by the ECtHR, "value judgments should not be subject to the test of veracity"), there must still be an assurance that the opinions are honestly and ethically expressed and that they are based on credible and sufficient factual support.</p>
+                <p>Opinions that take the form of comments on events or actions regarding persons or institutions must not try to deny the reality of facts or data.</p>
+                <p>In the exercise of the editorial activity, both the legitimate and mutual respect for the ideological orientations of the editors and the owners must be shown, but also the acceptance of the fact that this editorial activity is limited by demanding imperatives consisting in the reporting of correct news and ethical opinions. This is essential in order to respect the citizens' fundamental right to information. (Rez COE 1003/93)</p>
+
+            </div>
+        </div>
+     </div>
+
+
+
+     <!--SCROLL UP-->
+
+    <button onclick="topFunction()" id="scrollbtn" title="Go to top"><img class="scroll" src="{% static 'images/up.png' %}"></button>
+
+
+
+     <!--FOOTER-->
+
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+     
+     <div class="footer">
+        <a href='about_us#terms-and-cond' style="text-decoration: none; color: black"><p>[ Terms and conditions ]</p></a>
+        <a href='about_us#whorwe' style="text-decoration: none; color: black"><p>[ About us ]</p></a>
+        <a href='about_us#deontology' style="text-decoration: none; color: black"><p>[ Code of Deontology ]</p></a>
+        <a href='about_us#writers' style="text-decoration: none; color: black"><p>[ All writers ]</p></a>
+        <a href='contact' style="text-decoration: none; color: black"><p>[ Contact ]</p></a>
+        <a href='contact#upload-section' style="text-decoration: none; color: black"><p>[ Send footage ]</p></a>
+        
+        <div class="socials-1">
+            <a href="https://www.facebook.com/"><img class="socials-1-img" src="{% static 'images/icons8-facebook-96.png' %}"></a>
+            <a href="https://www.instagram.com/"><img class="socials-1-img" src="{% static 'images/icons8-instagram-96.png' %}"></a>
+            <a href="https://www.tiktok.com/en/"><img class="socials-1-img" src="{% static 'images/icons8-tiktok-96.png' %}"></a>
+            <a href="https://www.youtube.com/"><img class="socials-1-img" src="{% static 'images/icons8-youtube-96.png' %}"></a>
+            <a href="https://twitter.com/?lang=en"><img class="socials-1-img" src="{% static 'images/icons8-twitter-96.png' %}"></a>
+        </div>
+
+        <div class="socials-2">
+            <a href="https://www.tumblr.com"><img class="socials-2-img" src="{% static 'images/icons8-tumblr-96.png' %}"></a>
+            <a href="https://www.reddit.com/"><img class="socials-2-img" src="{% static 'images/icons8-reddit-96.png' %}"></a>
+            <a href="https://www.linkedin.com/"><img class="socials-2-img" src="{% static 'images/icons8-linkedin-96.png' %}"></a>
+            <a href="https://www.messenger.com/"><img class="socials-2-img" src="{% static 'images/icons8-facebook-messenger-96.png' %}"></a>
+            <a href="https://web.whatsapp.com/"><img class="socials-2-img" src="{% static 'images/icons8-whatsapp-96.png' %}"></a>  
+        </div>
+        
+        <div class="subscribe" id="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
+
+        <form action="{% url 'about_us' %}#subscribe" method="POST" class="form1" name="form1"><!--onsubmit="return required()-->
+        {% csrf_token %}
+            
+            <div class="row">
+                <div class="col-mail">
+                    <input type="email" id="email-sub" name="email-sub" placeholder="Your e-mail">
+                </div>
+            </div>
+
+            <div class="row-sub">
+                <input type="submit" value="Subscribe">
+            </div>
+    
+            <div>
+                <style>
+                    h4{
+                        margin-left: 460px;
+                        width: 30%;
+                    }
+                    @media only screen and (min-width: 768px){
+                        h4{
+                            margin-left: 540px;
+                        }
+                    }
+                </style>
+                {% for message in messages %}
+                    <h4>{{message}}</h4>
+                {% endfor %}
+            </div>  
+        </form>
+     </div>
+
+
+
+
+
+     <!-- LOGIN MODALl -->
+
+    <div id="login-modal" class="modal">
+
+        <div class="modal-content">
+            <div class="modal-header">      
+                <span class="close">&times;</span>
+            </div>
+        
+            <div class="modal-body">
+                <div style="text-align: center; font-size: 30px; margin-top:40px;">[ Log-in ]</div>
+
+                <div class="container-modal">
+                    <form action="{% url 'about_us' %}" method="POST">
+                    {% csrf_token %}
+                            <div class="row">
+                                <div class="col-25">
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" id="uname" name="username" placeholder="Username">
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="lname"></label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="password" id="pw" name="password" placeholder="Password">
+                                </div>
+                            </div>
+                        
+                            <div class="row">
+                                <input type="submit" value="Sign-in">
+                            </div>
+                            
+                            <br><br>
+    
+                            <div>
+                                {% for message in messages %}
+                                    {% if "login" in message.tags %}
+                                        <script>alert("Sorry, but your credentials are not valid. 😭")</script>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                        <div style="text-align: center; margin-top:50px"><span>Don't have an account yet?</span><a href='sign_up' style="text-decoration: none"><span class="sign-up-btn"> Sign up now.</span></a></div>                    
+                    </form>
+            </div>
+        
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+
+    
+
+    <!--script-->
+    <script src="{% static 'js/menu.js' %}"></script>
+    <script src="{% static 'js/login-modal.js' %}"></script>
+    <script src="{% static 'js/scroll-up.js' %}"></script>
+    <script>
+        function privilege(){
+            alert("Sorry, but you do not have the privileges to access the admin's page.");
+        }
+    </script>
+
+
+
+</body>
+</html>

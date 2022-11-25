@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/report-form.css' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap' %}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/logo-icon-neg.ico' %}" sizes="32x32"/>
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css"> 
+    <title>WeirdoWorld</title>
+</head>
+
+
+<body>
+    <div class="navbar" >
+        <div class="container">
+            <!-- The logo image can redirect you to the home page! -->
+            <div class="logo">
+                <a class="logo-img" href="/" title="Go back home">
+                    <img src="{% static 'images/logo.png' %}" alt="WeirdoWorld logo" style="max-width:250px; max-height:220px; padding-top: 20px; padding-left: 150px">
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="report-section">
+        <div class="report-content">
+                <div class="report-title" style="text-align: center; margin-top:50px;">[ Report form ]</div>
+                <p class="report-txt">Please choose a reason for reporting the comment</p>
+                <div class="report-form">
+                    <form action="{% url 'report_comm' %}" method="POST">
+                    {% csrf_token %}
+                        <!-- Once you press on the flag button near any comment, extract its ID from the database -->
+                        <a href="/report_comm?comm_id={{ comm.id }}"></a>
+                        <select name="reasons" class="select-reason">
+                            <option value="spam">Spam</option>
+                            <option value="hate">Hate-speech violation</option>
+                            <option value="terrorism">Suspected terrorism</option>
+                            <option value="SH">Sexual harrasement</option>
+                            <option value="violent">Violent threats</option>
+                        </select>  
+
+                        <div class="row">
+                            <input type="submit" name="submit" value="Submit feedback">
+                        </div>  
+
+                        <!-- Message for confirming the submission -->
+                        {% for m in messages %}
+                            {% if 'test' in m.tags %}
+                                <div style="margin-top: 40px">{{ m }}</div>
+                            {% endif %}
+                        {% endfor %}
+                    </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

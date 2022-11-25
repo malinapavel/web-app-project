@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/footage.css' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap' %}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/logo-icon-neg.ico' %}" sizes="32x32"/>
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css"> 
+    <title>WeirdoWorld</title>
+</head>
+
+
+
+<body>
+
+    <div class="navbar" >
+        <div class="container">
+            <!-- The logo image can redirect you to the home page! -->
+            <div class="logo">
+                <a class="logo-img" href="/" title="Go back home">
+                    <img src="{% static 'images/logo.png' %}" alt="WeirdoWorld logo" style="max-width:250px; max-height:220px; padding-top: 20px">
+                </a>
+            </div>
+            <p class="header-txt">[ Website management ]</p>
+        </div>
+    </div>
+
+
+    <br><br><br>
+
+    <!-- Open the sidebar menu by hovering over the symbol-->
+    <span class="menu-arrow" style="cursor:pointer" onmouseover="openNav()">>></span>
+
+
+    <!-- TABLES -->
+    <div class="tables">
+        <!-- Table for pending requests -->
+        <em class="pending-txt">Pending requests ({{ nr_pending }}) </em>
+        <form method="POST" action="{% url 'footage_admin' %}">
+            <table id="pending-table">
+                <tr>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Sent by</th>
+                <th style="width:30%">Date</th>
+                <th>Select</th>
+                </tr>
+
+                {% for f in pending_footage %}
+                    <tr>
+                    <td><img src ="{{ f.img.url }}" style="height: 40%; width: 40%"></td>
+                    <td>{{ f.description }}</td>
+                    <td>{{ f.user }}</td>
+                    <td style="width:30%">{{ f.sent_on }}</td>
+                    <!-- Select footages and extract their image file name, so that you manage them in views.py -->
+                    <td><input type="checkbox" value="{{ f.img }}" name="select" />&nbsp;</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <br>
+
+            {% csrf_token %}
+            <!-- Button for solving requests -->
+            <button class="select-footage" style="cursor: pointer"><i class="fa-solid fa-check" id="solve"><span class="txt">SOLVE THE SELECTED REQUESTS</span></i></button>
+        </form>
+
+        <br><br><br><br><br><br>
+
+        <!-- Table for all footages ever sent -->
+        <em class="all-txt">All footage </em>
+        <table id="all-table">
+            <tr>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Sent by</th>
+              <th>Date</th>
+              
+            </tr>
+
+            {% for f in footage %}
+                <tr>
+                <td><img src ="{{ f.img.url }}" style="height: 40%; width: 40%"></td>
+                <td>{{ f.description }}</td>
+                <td>{{ f.user }}</td>
+                <td style="width:30%">{{ f.sent_on }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    
+    <!-- SIDEBAR MENU -->
+    <div class="sidenav" id="mySidenav" onmouseleave="closeNav()">
+        <div class="list">
+            <a href='footage_admin'>Footage data</a>
+            <br><br>
+            <a href='comm_admin'>Comments</a>
+            <br><br>
+            <a href='news_admin'>News articles</a>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br>
+
+    <!-- script -->
+    <script src="{% static 'js/navigation-admin.js' %}"></script>
+
+</body>
+</html>

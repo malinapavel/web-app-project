@@ -1,0 +1,452 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap");
+html, body {
+  max-width: 100%;
+  max-height: 5500px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: white;
+  margin: 0;
+  font-family: "Karla", sans-serif;
+}
+
+/*MENU BAR*/
+/*LOW RESOLUTION (MOBILE)*/
+
+.navbar {
+    background: rgb(237, 237, 237);
+    height: 80px;
+    padding: 0.5em;
+  }
+
+.navbar .container .logo{
+    padding-left: 100px;
+}
+
+.navbar .container .header-txt{
+    margin-left: 400px;
+    margin-top: -40px;
+    font-size: 20px;
+}
+.menu-arrow{
+    padding-top: 50px;
+    margin-left: 50px;
+    font-size: 30px;
+    color: rgb(190, 190, 190);
+}
+.sidenav {
+    height: 70%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(19, 19, 19);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 200px;
+    margin-top: 95px;
+    border-radius: 3px;
+  }
+  
+  .sidenav a {
+    padding: 15px 1px 15px 40px;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(237, 237, 237);
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav .list a:hover {
+    background: black;
+  }
+  .tables{
+    margin-top:50px;
+  }
+  
+  .tables .all-txt{
+    margin-left: 120px;
+    font-size: 25px;
+    color: rgb(0, 0, 0)
+  }
+  #all-table {
+    margin-top: 30px;
+    margin-left: 120px;
+    font-family: Karla, sans-serif;
+    border-collapse: collapse;
+    width: 68%;
+  }
+  
+  #all-table td, #all-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #all-table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #all-table tr:hover {background-color: rgb(237, 237, 237);}
+  
+  #all-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(92, 92, 92);
+    color: white;
+  }
+
+  .add-article{
+    margin-top: 100px;
+    margin-left: 120px;
+    background-color: rgb(237, 237, 237);
+    border-radius: 10px;
+    font-size: 15px;
+    height: 35px;
+    font-family: Karla, sans-serif;
+  }
+  .add-article #add{
+    margin-left:-5px;
+  }
+  .add-article .txt{
+    padding: 10px 10px 10px 10px;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow-y: hidden;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    margin-top: 130px;
+    margin-left: 200px;
+    border: 1px solid #888;
+    width: 50%;
+    height: 60%;
+    overflow-y: hidden;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: -10px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /*LOW-RESOLUTION(FOR MOBILE)*/
+  input[type=text], select, textarea {
+    width: 70%;
+    height: 1px;
+    padding: 12px;
+    margin-top: 30px;
+    margin-left: -12px;
+    border: 1px solid rgb(181, 181, 181);
+    border-radius: 4px;
+    resize: vertical;
+  }
+  input[type=file], select, textarea {
+    width: 70%;
+    height: 10px;
+    padding: 12px;
+    margin-top: 20px;
+    margin-left: -20px;
+    resize: vertical;
+  }
+  label {
+    padding: 36px 12px 10px 0;
+    font-size: 12px;
+    display: inline-block;
+  }
+  
+  input[type=submit] {
+    background-color: rgb(218, 218, 218);
+    color: black;
+    padding: 11px 11px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 110px;
+    margin-top: 50px;
+  }
+  
+  input[type=submit]:hover {
+    background-color: rgb(203, 203, 203);
+  }
+  
+  .container-modal {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+  }
+  
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  @-webkit-keyframes slideIn {
+    from {
+      bottom: -300px;
+      opacity: 0;
+    }
+    to {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+  @keyframes slideIn {
+    from {
+      bottom: -300px;
+      opacity: 0;
+    }
+    to {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+/*DESKTOP RESOLUTION*/
+@media only screen and (min-width: 768px){
+    .navbar {
+        background: rgb(237, 237, 237);
+        height: 80px;
+        padding: 0.5em;
+      }
+    
+    .navbar .container .logo{
+        padding-left: 100px;
+    }
+    
+    .navbar .container .header-txt{
+        margin-left: 1070px;
+        margin-top: -50px;
+        font-size: 29px;
+    }
+    .menu-arrow{
+        margin-left: 20px;
+        font-size: 40px;
+        color: rgb(190, 190, 190);
+    }
+    .tables .all-txt{
+    margin-left: 120px;
+    font-size: 25px;
+    color: rgb(0, 0, 0)
+  }
+  #all-table {
+    margin-top: 30px;
+    margin-left: 120px;
+    font-family: Karla, sans-serif;
+    border-collapse: collapse;
+    width: 68%;
+  }
+  
+  #all-table td, #all-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #all-table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #all-table tr:hover {background-color: rgb(237, 237, 237);}
+  
+  #all-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(92, 92, 92);
+    color: white;
+  }#all-table {
+    margin-top: 30px;
+    margin-left: 120px;
+    font-family: Karla, sans-serif;
+    border-collapse: collapse;
+    width: 85%;
+  }
+    .modal {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgb(0, 0, 0);
+          background-color: rgba(0, 0, 0, 0.4);
+          overflow-y: hidden;
+          -webkit-animation-name: fadeIn;
+          -webkit-animation-duration: 0.4s;
+          animation-name: fadeIn;
+          animation-duration: 0.4s;
+    }
+    .modal-content {
+          background-color: #fefefe;
+          margin: 15% auto;
+          padding: 20px;
+          margin-top: 130px;
+          border: 1px solid #888;
+          width: 30%;
+          height: 60%;
+          overflow-y: hidden;
+          -webkit-animation-name: slideIn;
+          -webkit-animation-duration: 0.4s;
+          animation-name: slideIn;
+          animation-duration: 0.4s;
+        }
+    .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+          margin-top: -10px;
+    }
+    .close:hover, .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+    }
+    input[type=text], select, textarea {
+          width: 70%;
+          height: 5px;
+          padding: 12px;
+          margin-top: 30px;
+          margin-left: -15px;
+          border: 1px solid rgb(181, 181, 181);
+          border-radius: 4px;
+          resize: vertical;
+    }
+    input[type=file], select, textarea {
+          width: 70%;
+          height: 10px;
+          padding: 12px;
+          margin-top: 17px;
+          margin-left: -25px;
+          resize: vertical;
+    }
+    input[type=submit] {
+          background-color: rgb(218, 218, 218);
+          color: black;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-left: 150px;
+          margin-top: 40px;
+    }
+    input[type=submit]:hover {
+          background-color: rgb(203, 203, 203);
+    }
+    .container-modal {
+          border-radius: 5px;
+          background-color: white;
+          padding: 20px;
+    }
+    .col-25 {
+          float: left;
+          width: 25%;
+          margin-top: 6px;
+    }
+    .col-75 {
+          float: left;
+          width: 75%;
+          margin-top: 6px;
+    }
+    .row:after {
+          content: "";
+          display: table;
+          clear: both;
+    }
+    @-webkit-keyframes slideIn {
+          from {
+            bottom: -300px;
+            opacity: 0;
+          }
+          to {
+            bottom: 0;
+            opacity: 1;
+          }
+    }
+    @keyframes slideIn {
+          from {
+            bottom: -300px;
+            opacity: 0;
+          }
+          to {
+            bottom: 0;
+            opacity: 1;
+          }
+    }
+    @-webkit-keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+    }
+    @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+}

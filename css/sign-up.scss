@@ -449,14 +449,13 @@ nav {
         height: 1px;
         padding: 12px;
         margin-top: 30px;
-        margin-left: 1px;
+        margin-left: -190px;
         border: 1px solid rgb(181, 181, 181);
         border-radius: 4px;
         resize: vertical;
       }
       
       label {
-        padding: 36px 12px 10px 0;
         font-size: 15px;
         display: inline-block;
       }
@@ -518,14 +517,13 @@ nav {
             height: 1px;
             padding: 12px;
             margin-top: 30px;
-            margin-left: -200px;
+            margin-left: -350px;
             border: 1px solid rgb(181, 181, 181);
             border-radius: 4px;
             resize: vertical;
           }
           
           label {
-            padding: 36px 12px 10px 0;
             font-size: 15px;
             display: inline-block;
           }
@@ -637,7 +635,7 @@ nav {
 
     }
 
-    .row .col-75{
+    .row .col-mail{
 
       margin-left: 458px;
       margin-top: -20px;
@@ -734,7 +732,7 @@ nav {
 
     }
 
-    .row .col-75{
+    .row .col-mail{
 
       margin-left: 500px;
       margin-top: -20px;

@@ -1,0 +1,351 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Karla:wght@600&display=swap' %}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/logo-icon-neg.ico' %}" sizes="32x32"/>
+    <title>WeirdoWorld</title>
+</head>
+<body>
+
+
+
+    <!--MENU BAR-->
+
+    <div class="navbar">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <a class="logo-img" href="index.html">
+                    <img src="{% static 'images/logo.png' %}" alt="WeirdoWorld logo" style="max-width:250px; max-height:220px; padding-top: 20px; padding-left: 100px">
+                </a>
+            </div>
+
+            <!-- For the mobile resolution - hamburger menu -->
+            <img id="mob" class="mobile-menu" src="{% static 'images/menu-icon.png' %}" alt="Extend menu" style="width:30px; height:30px; padding: 1% 2%">
+
+            <!-- Pages list -->
+            <nav style="float: right">
+                <!-- For the mobile resolution - closing the hamburger menu -->
+                <img id="mob-exit" class="mobile-menu-exit" class="close" src="{% static 'images/x-symbol.png' %}" alt="Close mobile menu" style="width:20px; height:20px; padding: 1% 2%">
+                
+                <!-- First list of pages -->
+                <ul class="primary-nav" style="list-style: none">
+                    <li><a href='index'><span>[ Home ]</span></a></li>
+                    <li><a href='all_news'><span>[ All news ]</span></a></li>
+                    <li><a href='about_us'><span>[ About Us ]</span></a></li>
+                    <li><a href='contact'><span>[ Contact ]</span></a></li>
+                </ul>
+
+                <!-- Second list of pages - log-in and admin page -->
+                <ul class="secondary-nav" style="list-style: none">
+                    <!-- Enable buttons for logged-in users -->
+                    {% if request.user.is_authenticated %}
+                        <li style="margin-left: -290px; margin-top: -2px"><a href='log_out'><span>[ Log-out ]</span></a></li>
+                        
+                        <!-- Pressing the username will redirect to the admin page (or alert) -->
+                        <li style="margin-left: -300px; margin-top: -2px" title="Go to admin page">
+                            {% if user.is_superuser %}
+                                <a href='admin_page'>
+                                    <span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span>
+                                </a>
+                            {% else %}
+                                <a href="#" onclick="privilege()">
+                                    <span style=" background: #970EC9; background: linear-gradient(to right, #970EC9 0%, #CF1512 100%);background-clip: text;-webkit-text-fill-color: transparent!important">@{{ user.username }}</span>
+                                </a>
+                            {% endif %}
+                        </li> 
+                    {% else %}
+                        <li id="modalbtn" style="margin-left: -400px; margin-top: -2px"><a href="#"><span>[ Log-in ]</span></a></li>
+                    {% endif %}
+                </ul>
+            </nav>   
+        </div>   
+    </div>
+
+
+
+
+    <!--NEWS SLIDESHOW FOR POPULAR NEWS-->
+
+    <!-- Separator text -->
+    <div class="popular">
+
+        <br><br><br>
+        
+        <div class= "container-popular">
+            <div class="separator"></div>
+            <h1><span class="popular-text">POPULAR RIGHT NOW</span></h1>
+            <div class="separator"></div>
+        </div>
+
+    </div>
+
+    <br><br><br>
+    
+   <!--  Container -->
+    <div class="slideshow-container">
+        <!-- Display top 5 most popular news (based on their visit count) -->
+        {% for news in display_news|dictsortreversed:"access_count"|slice:"5" %}
+            <style>
+                h3{
+                    margin-left: -280px;
+                    width: 1000%;
+                    font-size: 20px;
+                    text-align: left;
+                }
+                @media only screen and (min-width: 768px){
+                    h3{
+                        margin-left: -280px;
+                        width: 100%;
+                        font-size: 25px;
+                        text-align: left;
+                    }
+                }
+            </style>
+
+            <!-- Links that redirect to that specific article (based on their ID) -->
+            <div class="slide fade">
+                <a href="{% url 'news_article' news.id %}">
+                    <img src="{{news.img.url}}" style="width:700px; height:400px; margin-left:-300px">
+                    <div class="text">
+                        <h3>{{news.title}}</h3>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+
+        <!-- Buttons for navigating through the news slideshow -->
+        <a class="prev" style="margin-left: -300px" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" style="margin-right: 300px"onclick="plusSlides(1)">&#10095;</a>
+
+        
+    </div>
+
+    <br>
+  
+    <!-- Dots -->
+    <div style="text-align:left; margin-left:420px; margin-top:5px">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div> 
+
+
+
+
+
+    <!--FILLER ANNOUNCEMENT-->
+
+    <img class="fade" src="{% static 'images/Heavy-metal-knitting-5.jpg' %}" alt="WeirdoWorld will publish your stories" style="max-width:480px; max-height:800px; margin-top: -1000px; padding-left: 900px">
+
+
+
+
+    <!--LATEST NEWS-->
+
+    <div class="featured">
+        
+        <br><br><br><br><br><br>
+        
+        <!-- Separator text -->
+        <div class= "container-latest">
+            <div class="separator"></div>
+            <h1><span class="featured-text">LATEST NEWS</span></h1>
+            <div class="separator"></div>
+
+            <br><br><br><br><br>
+
+            <!-- Display the 5 most recent news -->
+            <div class="item" >
+                <div class="column ">
+                  <div class="inner">
+                    {% for news in display_news|dictsortreversed:"written_on"|slice:"5" %}
+                        <div class="article-container">
+                            <div class="featured-image"> 
+                                <a href="{% url 'news_article' news.id %}" style="text-decoration: none; color: black">
+                                    <img class="imgf" alt="" src="{{news.img.url}}">
+                            </div>
+                                    <h3 class="featured-title" style="color:black; margin-bottom: 10px">{{news.title}}</h3>
+                                </a>
+                            <i class="date" style="color:rgb(190, 190, 190); font-family: Karla;">Written on {{news.written_on}}</i>
+                            <h2 class="description" style="color:rgb(190, 190, 190)">{{news.description_brief}}</h2>
+                        </div>
+                        
+                        <br>
+                    {% endfor %}
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--SCROLL UP-->
+
+    <button onclick="topFunction()" id="scrollbtn" title="Go to top"><img class="scroll" src="{% static 'images/up.png' %}"></button>
+
+    
+
+
+     <!--FOOTER-->
+
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+     <!-- Links to other pages -->
+     <div class="footer">
+        <a href='about_us#terms-and-cond' style="text-decoration: none; color: black"><p>[ Terms and conditions ]</p></a>
+        <a href='about_us#whorwe' style="text-decoration: none; color: black"><p>[ About us ]</p></a>
+        <a href='about_us#deontology' style="text-decoration: none; color: black"><p>[ Code of Deontology ]</p></a>
+        <a href='about_us#writers' style="text-decoration: none; color: black"><p>[ All writers ]</p></a>
+        <a href='contact' style="text-decoration: none; color: black"><p>[ Contact ]</p></a>
+        <a href='contact#upload-section' style="text-decoration: none; color: black"><p>[ Send footage ]</p></a>
+        
+
+        <!-- Links to social media pages -->
+        <div class="socials-1">
+            <a href="https://www.facebook.com/"><img class="socials-1-img" src="{% static 'images/icons8-facebook-96.png' %}"></a>
+            <a href="https://www.instagram.com/"><img class="socials-1-img" src="{% static 'images/icons8-instagram-96.png' %}"></a>
+            <a href="https://www.tiktok.com/en/"><img class="socials-1-img" src="{% static 'images/icons8-tiktok-96.png' %}"></a>
+            <a href="https://www.youtube.com/"><img class="socials-1-img" src="{% static 'images/icons8-youtube-96.png' %}"></a>
+            <a href="https://twitter.com/?lang=en"><img class="socials-1-img" src="{% static 'images/icons8-twitter-96.png' %}"></a>
+        </div>
+
+        <div class="socials-2">
+            <a href="https://www.tumblr.com"><img class="socials-2-img" src="{% static 'images/icons8-tumblr-96.png' %}"></a>
+            <a href="https://www.reddit.com/"><img class="socials-2-img" src="{% static 'images/icons8-reddit-96.png' %}"></a>
+            <a href="https://www.linkedin.com/"><img class="socials-2-img" src="{% static 'images/icons8-linkedin-96.png' %}"></a>
+            <a href="https://www.messenger.com/"><img class="socials-2-img" src="{% static 'images/icons8-facebook-messenger-96.png' %}"></a>
+            <a href="https://web.whatsapp.com/"><img class="socials-2-img" src="{% static 'images/icons8-whatsapp-96.png' %}"></a>
+        </div>
+        
+        
+        <!-- Subscribe section -->
+        <div class="subscribe" id="subscribe"><p>[ Subscribe to our newsletter ]</p></div>
+
+        <form action="{% url 'index' %}#subscribe" method="POST" class="form1" name="form1">
+        {% csrf_token %}
+            
+            <!-- E-mail field -->
+            <div class="row">
+                <div class="col-mail">
+                    <input type="email" id="email-sub" name="email-sub" placeholder="Your e-mail">
+                </div>
+            </div>
+
+            <!-- Subscribe button -->
+            <div class="row-sub">
+                <input type="submit" value="Subscribe">
+            </div>
+    
+            <!-- Display confirmation/infirmation messages after subscribing -->
+            <div>
+                <style>
+                    h4{
+                        margin-left: 460px;
+                        width: 30%;
+                    }
+                    @media only screen and (min-width: 768px){
+                        h4{
+
+                            margin-left: 540px;
+
+                        }
+                    }
+                </style>
+                {% for message in messages %}
+                    {% if "email" in message.tags %}
+                        <h4>{{message}}</h4>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+
+
+
+     <!-- LOGIN MODALl -->
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <!-- Close modal button -->
+            <div class="modal-header">      
+                <span class="close">&times;</span>
+            </div>
+        
+
+            <div class="modal-body">
+                <div style="text-align: center; font-size: 30px; margin-top:40px;">[ Log-in ]</div>
+
+                <!-- Log-in form -->
+                <div class="container-modal">
+                    <form action="{% url 'index' %}" method="POST">
+                    {% csrf_token %}
+                        <!-- Username field -->
+                        <div class="row">
+                            <div class="col-25">
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="uname" name="username" placeholder="Username">
+                            </div>
+                        </div>
+
+                        <!-- Password field -->
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="lname"></label>
+                            </div>
+                            <div class="col-75">
+                                <input type="password" id="pw" name="password" placeholder="Password">
+                            </div>
+                        </div>
+                    
+                        <!-- Sign-in button -->
+                        <div class="row">
+                            <input type="submit" value="Sign-in">
+                        </div>
+
+                        <br><br>
+
+                        <div>
+                            {% for message in messages %}
+                                {% if "login" in message.tags %}
+                                    <script>alert("Sorry, but your credentials are not valid. 😭")</script>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                        <div style="text-align: center; margin-top:50px"><span>Don't have an account yet?</span><a href='sign_up' style="text-decoration: none"><span class="sign-up-btn"> Sign up now.</span></a></div>
+                    
+                    </form>
+            </div>
+        
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+
+    
+
+    <!--script-->
+    <script src="{% static 'js/menu.js' %}"></script>
+    <script src="{% static 'js/login-modal.js' %}"></script>
+    <script src="{% static 'js/slideshow.js' %}"></script>
+    <script src="{% static 'js/scroll-up.js' %}"></script>
+    <script>
+        function privilege(){
+            alert("Sorry, but you do not have the privileges to access the admin's page.");
+        }
+    </script>
+
+
+</body>
+</html>
